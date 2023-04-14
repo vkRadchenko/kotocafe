@@ -1,12 +1,11 @@
 import styled, { createGlobalStyle } from 'styled-components'
-import colors from 'consts/colors'
 
 export const AppStyles = createGlobalStyle`
 body{
   -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin: 0;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 14px;
     font-style: normal;
     font-weight: normal;
@@ -22,7 +21,6 @@ body{
   a {
     color: inherit;
     text-decoration: inherit;
-    color: ${colors.primary};
   }
   ul, li {
     list-style: none;
