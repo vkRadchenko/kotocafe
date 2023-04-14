@@ -1,3 +1,4 @@
+import Filter from 'components/blocks/filter/filter'
 import { MainWrapper } from './styled'
 import CatsListPage from 'components/pages/catsListPage/catsListPage'
 
@@ -5,8 +6,9 @@ const Main: React.FC = () => (
   <MainWrapper>
     <div className="container">
       <div className="row mt-5 mb-5">
-        <h1 className="mb-4">Наши животные</h1>
-
+        <h1 className="mb-4 fw-bold">Наши животные</h1>
+        <h3 className="mb-3 fw-bold">Фильтр</h3>
+        <Filter />
         <div className="col-9">
           <CatsListPage />
         </div>
