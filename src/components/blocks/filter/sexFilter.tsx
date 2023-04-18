@@ -24,7 +24,7 @@ const SexFilter: React.FC = () => {
           value="option2"
         />
         <label className="form-check-label" htmlFor="inlineRadio2">
-          Девочки
+          Кошки
         </label>
       </div>
       <div className="form-check form-check-inline">
@@ -36,7 +36,7 @@ const SexFilter: React.FC = () => {
           value="option3"
         />
         <label className="form-check-label" htmlFor="inlineRadio3">
-          Мальчики
+          Коты
         </label>
       </div>
     </div>
