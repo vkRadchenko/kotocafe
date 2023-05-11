@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import CardCat from 'components/common/cardCat/cardCat'
 import Pagination from 'components/common/pagination'
 import initialCats from 'mockData/cats'
@@ -7,9 +7,13 @@ import Filter from 'components/blocks/filter/filter'
 
 const CatsListPage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1)
-  const [filteredCatData, setFilteredCatData] = useState({ sex: '', breed: '' })
+  const [filteredCatData, setFilteredCatData] = useState({
+    sex: '',
+    breed: '',
+  })
   const catsLenght = initialCats.length
   const pageSize = 5
+  console.log(filteredCatData)
 
   const handlePageChange = (pageIndex: number) => {
     setCurrentPage(pageIndex)
@@ -18,7 +22,6 @@ const CatsListPage: React.FC = () => {
   const handleFilterSelect = (params: any) => {
     setFilteredCatData(params)
   }
-
   const filteredCat = () => {
     const sexItem = initialCats.filter((cat) => cat.sex === filteredCatData.sex)
     const breedItem = initialCats.filter(

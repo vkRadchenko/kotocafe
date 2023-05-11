@@ -1,6 +1,5 @@
 import Button from 'components/ui/button/button'
 import BreedFilter from './breedFilter'
-import RangeYearFilter from './rangeFilter/rangeYearFilter'
 import SexFilter from './sexFilter/sexFilter'
 import { useEffect, useState } from 'react'
 
@@ -12,9 +11,7 @@ const Filter: React.FC<catsFilter> = ({ onCatSelect }) => {
   const [allFilteredData, setAllFilteredData] = useState({
     sex: '',
     breed: '',
-    yaer: [1, 15],
   })
-  console.log(allFilteredData.yaer)
 
   useEffect(() => {
     onCatSelect(allFilteredData)
@@ -27,16 +24,10 @@ const Filter: React.FC<catsFilter> = ({ onCatSelect }) => {
     setAllFilteredData((prevstate) => ({ ...prevstate, breed: params }))
   }
 
-  const handleYearStatus = (params: Array<number>) => {
-    setAllFilteredData((prevstate) => ({ ...prevstate, yaer: params }))
-  }
-
   return (
     <>
       <SexFilter onSexChange={handleSexStatus} />
       <BreedFilter onBreedChange={handleBreedStatus} />
-      <RangeYearFilter onYearChange={handleYearStatus} />
-
       <Button>Сбросить</Button>
     </>
   )
