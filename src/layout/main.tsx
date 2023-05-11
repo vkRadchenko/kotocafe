@@ -8,8 +8,7 @@ const Main: React.FC = () => (
       <div className="row mt-5 mb-5">
         <h1 className="mb-4 fw-bold">Наши животные</h1>
         <h3 className="mb-3 fw-bold">Фильтр</h3>
-        <Filter />
-        <div className="col-9">
+        <div className="col-12">
           <CatsListPage />
         </div>
       </div>
