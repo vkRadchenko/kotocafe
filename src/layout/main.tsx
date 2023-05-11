@@ -1,4 +1,3 @@
-import Filter from 'components/blocks/filter/filter'
 import { MainWrapper } from './styled'
 import CatsListPage from 'components/pages/catsListPage/catsListPage'
 
