@@ -1,21 +1,43 @@
 import Button from 'components/ui/button/button'
 import BreedFilter from './breedFilter'
-import RangeYearFilter from './rangeYearFilter'
-import SexFilter from './sexFilter'
+import RangeYearFilter from './rangeFilter/rangeYearFilter'
+import SexFilter from './sexFilter/sexFilter'
+import { useEffect, useState } from 'react'
 
-const Filter: React.FC = () => {
+type catsFilter = {
+  onCatSelect: (params: any) => void
+}
+
+const Filter: React.FC<catsFilter> = ({ onCatSelect }) => {
+  const [allFilteredData, setAllFilteredData] = useState({
+    sex: '',
+    breed: '',
+    yaer: [1, 15],
+  })
+  console.log(allFilteredData.yaer)
+
+  useEffect(() => {
+    onCatSelect(allFilteredData)
+  }, [allFilteredData])
+
+  const handleSexStatus = (params: string) => {
+    setAllFilteredData((prevstate) => ({ ...prevstate, sex: params }))
+  }
+  const handleBreedStatus = (params: string) => {
+    setAllFilteredData((prevstate) => ({ ...prevstate, breed: params }))
+  }
+
+  const handleYearStatus = (params: Array<number>) => {
+    setAllFilteredData((prevstate) => ({ ...prevstate, yaer: params }))
+  }
+
   return (
     <>
-      <div
-        style={{ height: 'fit-content' }}
-        className="col-3 border rounded pt-3 pb-3"
-      >
-        <SexFilter />
-        <BreedFilter />
-        <RangeYearFilter />
+      <SexFilter onSexChange={handleSexStatus} />
+      <BreedFilter onBreedChange={handleBreedStatus} />
+      <RangeYearFilter onYearChange={handleYearStatus} />
 
-        <Button>Сбросить</Button>
-      </div>
+      <Button>Сбросить</Button>
     </>
   )
 }
