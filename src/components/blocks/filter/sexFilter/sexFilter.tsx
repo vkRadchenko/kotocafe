@@ -1,7 +1,9 @@
+import { useState } from 'react'
 import InputSex from './inputSex'
 
 type sexFilter = {
   onSexChange: (params: string) => void
+  clearFilter: string
 }
 
 enum catSex {
@@ -9,10 +11,11 @@ enum catSex {
   male = 'Кот',
 }
 
-const SexFilter: React.FC<sexFilter> = ({ onSexChange }) => {
+const SexFilter: React.FC<sexFilter> = ({ onSexChange, clearFilter }) => {
   const handleInputSex = (params: string) => {
     onSexChange(params)
   }
+
   return (
     <div className="col">
       <p className="mb-2 fw-bold">Выберите пол</p>
@@ -21,25 +24,27 @@ const SexFilter: React.FC<sexFilter> = ({ onSexChange }) => {
         name={'inlineRadioOptions'}
         id={'inlineRadio1'}
         value={''}
-        defaultChecked
+        checked={clearFilter === ''}
         labelContent={'Все'}
-        onInputClick={handleInputSex}
+        onInputChange={handleInputSex}
       />
       <InputSex
         type={'radio'}
         name={'inlineRadioOptions'}
         id={'inlineRadio2'}
         value={catSex.female}
+        checked={clearFilter === 'Кошка'}
         labelContent={'Кошки'}
-        onInputClick={handleInputSex}
+        onInputChange={handleInputSex}
       />
       <InputSex
         type={'radio'}
         name={'inlineRadioOptions'}
         id={'inlineRadio3'}
         value={catSex.male}
+        checked={clearFilter === 'Кот'}
         labelContent={'Коты'}
-        onInputClick={handleInputSex}
+        onInputChange={handleInputSex}
       />
     </div>
   )
