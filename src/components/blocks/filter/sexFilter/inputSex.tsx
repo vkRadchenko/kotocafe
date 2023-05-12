@@ -3,9 +3,9 @@ type inputOptions = {
   name: string
   id: string
   value: string
-  defaultChecked?: boolean
+  checked?: boolean
   labelContent: string
-  onInputClick?: (params: string) => void
+  onInputChange?: (params: string) => void
 }
 
 const InputSex: React.FC<inputOptions> = ({
@@ -13,9 +13,9 @@ const InputSex: React.FC<inputOptions> = ({
   name,
   id,
   value,
-  defaultChecked,
+  checked,
   labelContent,
-  onInputClick = () => {},
+  onInputChange = () => {},
 }) => {
   return (
     <div className="form-check form-check-inline">
@@ -25,8 +25,8 @@ const InputSex: React.FC<inputOptions> = ({
         name={name}
         id={id}
         value={value}
-        defaultChecked={defaultChecked}
-        onClick={() => onInputClick(value)}
+        checked={checked}
+        onChange={() => onInputChange(value)}
       />
       <label className="form-check-label" htmlFor={id}>
         {labelContent}
