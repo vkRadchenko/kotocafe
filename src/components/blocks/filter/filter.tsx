@@ -1,7 +1,7 @@
-import Button from 'components/ui/button/button'
 import BreedFilter from './breedFilter'
 import SexFilter from './sexFilter/sexFilter'
-import { useEffect, useState } from 'react'
+import Button from 'components/ui/button/button'
+import { useEffect, useState, useRef } from 'react'
 
 type catsFilter = {
   onCatSelect: (params: any) => void
@@ -23,12 +23,21 @@ const Filter: React.FC<catsFilter> = ({ onCatSelect }) => {
   const handleBreedStatus = (params: string) => {
     setAllFilteredData((prevstate) => ({ ...prevstate, breed: params }))
   }
+  const handleButtonReset = () => {
+    setAllFilteredData({ sex: '', breed: '' })
+  }
 
   return (
     <>
-      <SexFilter onSexChange={handleSexStatus} />
-      <BreedFilter onBreedChange={handleBreedStatus} />
-      <Button>Сбросить</Button>
+      <SexFilter
+        onSexChange={handleSexStatus}
+        clearFilter={allFilteredData.sex}
+      />
+      <BreedFilter
+        onBreedChange={handleBreedStatus}
+        clearFilter={allFilteredData.breed}
+      />
+      <Button onClick={handleButtonReset}>Сбросить</Button>
     </>
   )
 }
