@@ -13,7 +13,6 @@ const CatsListPage: React.FC = () => {
   })
   const catsLenght = initialCats.length
   const pageSize = 5
-  console.log(filteredCatData)
 
   const handlePageChange = (pageIndex: number) => {
     setCurrentPage(pageIndex)
@@ -22,6 +21,7 @@ const CatsListPage: React.FC = () => {
   const handleFilterSelect = (params: any) => {
     setFilteredCatData(params)
   }
+
   const filteredCat = () => {
     const sexItem = initialCats.filter((cat) => cat.sex === filteredCatData.sex)
     const breedItem = initialCats.filter(
