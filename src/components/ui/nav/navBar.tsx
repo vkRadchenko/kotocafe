@@ -15,11 +15,6 @@ const NavBar: React.FC = () => {
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/helping">
-              Помочь
-            </Link>
-          </li>
-          <li className="nav-item">
             <Link className="nav-link" to="/contact">
               Контакты
             </Link>
