@@ -11,6 +11,11 @@ const NavBar: React.FC = () => {
         <ul className="nav">
           <li className="nav-item">
             <Link className="nav-link" to="/">
+              Главная
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/cats">
               Наши животные
             </Link>
           </li>
