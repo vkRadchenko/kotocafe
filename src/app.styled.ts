@@ -53,6 +53,9 @@ body{
   h4, .h4 {
     font-size: 16px;
   }
+  h5, .h5{
+    font-size: 14px;
+  }
   p, li {
     line-height: 21px;
   }
