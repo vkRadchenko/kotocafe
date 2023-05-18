@@ -16,8 +16,7 @@ function App(): JSX.Element {
         <Header />
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path="/cats" element={<Cats />} />
-          <Route path="/cats/:catId" element={<CatDetalPage />} />
+          <Route path="/cats/:catId?" element={<Cats />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
