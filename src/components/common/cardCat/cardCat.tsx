@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { CardImage, CardWrapper, Like } from './styled'
 import { CatsInterface } from 'components/types/catsInterface'
 
@@ -7,6 +8,7 @@ interface CardCat {
   history: string
   periodInShelter: number
   sex: string
+  id: string
 }
 
 const CardCat: React.FC<CardCat> = ({
@@ -14,17 +16,24 @@ const CardCat: React.FC<CardCat> = ({
   history,
   periodInShelter,
   sex,
+  id,
 }) => {
   const [favorits, setFavorits] = useState(false)
-
+  const navigate = useNavigate()
   const handleHeartClick = () => {
     setFavorits((prevState) => !prevState)
+  }
+  const handleCardClick = (params: any) => {
+    navigate(`/cats/${id}`)
   }
 
   return (
     <>
-      <div className="col ">
-        <CardWrapper className="card h-100 position-relative">
+      <div className="col">
+        <CardWrapper
+          className="card h-100 position-relative"
+          onClick={handleCardClick}
+        >
           <CardImage
             src={require('../../../img/base_87716f252d.jpg')}
             className="card-img-top"
@@ -46,11 +55,6 @@ const CardCat: React.FC<CardCat> = ({
             </div>
 
             <p className="card-text ">{history}</p>
-          </div>
-          <div className="ps-3 mb-2 mt-2">
-            <a href="/" className="card-link text-primary">
-              Подробнее
-            </a>
           </div>
           <div className="card-footer bg-white">
             <small className="text-body-secondary">
