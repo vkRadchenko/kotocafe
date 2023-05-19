@@ -1,20 +1,15 @@
 import React, { useState } from 'react'
 import { CardImage, CardWrapper, Like } from './styled'
+import { CatsInterface } from 'components/types/catsInterface'
 
-interface I_CatCardProps {
-  id: string
+interface CardCat {
   name: string
-  breed: string
-  sex: string
-  year?: number
-  periodInShelter: number
-  health: string
-  temper: string
-  qualities: Array<string>
   history: string
+  periodInShelter: number
+  sex: string
 }
 
-const CardCat: React.FC<I_CatCardProps> = ({
+const CardCat: React.FC<CardCat> = ({
   name,
   history,
   periodInShelter,
