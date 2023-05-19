@@ -19,7 +19,7 @@ const CatsListPage: React.FC = () => {
     api.cats.fetchAll().then((data) => setCat(data))
   }, [])
 
-  const pageSize = 5
+  const pageSize = 6
 
   const handlePageChange = (pageIndex: number) => {
     setCurrentPage(pageIndex)
@@ -74,6 +74,7 @@ const CatsListPage: React.FC = () => {
                     periodInShelter={cat.periodInShelter}
                     sex={cat.sex}
                     key={cat.id}
+                    id={cat.id}
                   />
                 ))}
               </div>
