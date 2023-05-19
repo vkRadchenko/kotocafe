@@ -1,4 +1,38 @@
+import { Qualities } from 'components/types/catQualities'
 import { CatsInterface } from 'components/types/catsInterface'
+
+const qualities: Qualities = {
+  playful: {
+    _id: '67rdca3eeb7f6fgeed471198',
+    name: 'Игривая',
+    color: 'primary',
+  },
+  strange: {
+    _id: '67rdca3eeb7f6fgeed471100',
+    name: 'Странная',
+    color: 'secondary',
+  },
+  laziness: {
+    _id: '67rdca3eeb7f6fgeed4711012',
+    name: 'Ленивая',
+    color: 'info',
+  },
+  foodie: {
+    _id: '67rdca3eeb7f6fgeed471101',
+    name: 'Обжора',
+    color: 'warning',
+  },
+  handsome: {
+    _id: '67rdca3eeb7f6fgeed471102',
+    name: 'Кусака',
+    color: 'danger',
+  },
+  uncertain: {
+    _id: '67rdca3eeb7f6fgeed471103',
+    name: 'Неуверенная',
+    color: 'light',
+  },
+}
 
 const cats: CatsInterface[] = [
   {
@@ -9,12 +43,8 @@ const cats: CatsInterface[] = [
     year: '1',
     periodInShelter: 1,
     health: 'good',
-    temper: 'dddddddddddddddddddddddd',
-    qualities: [
-      '67rdca3eeb7f6fgeed471198',
-      '67rdca3eeb7f6fgeed471102',
-      '67rdca3eeb7f6fgeed471100',
-    ],
+    temper: 'Добрая',
+    qualities: [qualities.strange, qualities.foodie],
     history:
       'Она грациозна, степенна и как Снежная Королева, кажется такой недоступной. Хотя, чему тут удивляться. Если жить долгое время на улице, где страшно, холодно и так одиноко, волей не волей, станешь холодной и недоступной. Она грациозна, степенна и как Снежная Королева, кажется такой недоступной. Хотя, чему тут удивляться. Если жить долгое время на улицеОна грациозна, степенна и как Снежная Королева, кажется такой недоступной. Хотя, чему тут удивляться. Если жить долгое время на улице',
   },
@@ -26,12 +56,8 @@ const cats: CatsInterface[] = [
     year: '1',
     periodInShelter: 1,
     health: 'good',
-    temper: 'dddddddddddddddddddddddd',
-    qualities: [
-      '67rdca3eeb7f6fgeed471198',
-      '67rdca3eeb7f6fgeed471102',
-      '67rdca3eeb7f6fgeed471100',
-    ],
+    temper: 'Ласковая',
+    qualities: [qualities.strange, qualities.foodie],
     history:
       'Она грациозна, степенна и как Снежная Королева, кажется такой недоступной. Хотя, чему тут удивляться. Если жить долгое время на улице',
   },
@@ -43,12 +69,8 @@ const cats: CatsInterface[] = [
     year: '3',
     periodInShelter: 1,
     health: 'good',
-    temper: 'dddddddddddddddddddddddd',
-    qualities: [
-      '67rdca3eeb7f6fgeed471198',
-      '67rdca3eeb7f6fgeed471102',
-      '67rdca3eeb7f6fgeed471100',
-    ],
+    temper: 'Любит детей',
+    qualities: [qualities.strange, qualities.foodie],
     history:
       'Она грациозна, степенна и как Снежная Королева, кажется такой недоступной. Хотя, чему тут удивляться. Если жить долгое время на улице, где страшно, холодно и так одиноко, волей не волей, станешь холодной и недоступной.',
   },
@@ -60,12 +82,8 @@ const cats: CatsInterface[] = [
     year: '4',
     periodInShelter: 1,
     health: 'good',
-    temper: 'dddddddddddddddddddddddd',
-    qualities: [
-      '67rdca3eeb7f6fgeed471198',
-      '67rdca3eeb7f6fgeed471102',
-      '67rdca3eeb7f6fgeed471100',
-    ],
+    temper: 'Добрая',
+    qualities: [qualities.strange, qualities.foodie],
     history:
       'Она грациозна, степенна и как Снежная Королева, кажется такой недоступной. Хотя, чему тут удивляться. Если жить долгое время на улице, где страшно, холодно и так одиноко, волей не волей, станешь холодной и недоступной.',
   },
@@ -77,12 +95,8 @@ const cats: CatsInterface[] = [
     year: '6',
     periodInShelter: 1,
     health: 'good',
-    temper: 'dddddddddddddddddddddddd',
-    qualities: [
-      '67rdca3eeb7f6fgeed471198',
-      '67rdca3eeb7f6fgeed471102',
-      '67rdca3eeb7f6fgeed471100',
-    ],
+    temper: 'Добрая',
+    qualities: [qualities.strange, qualities.foodie],
     history:
       'Она грациозна, степенна и как Снежная Королева, кажется такой недоступной. Хотя, чему тут удивляться. Если жить долгое время на улице, где страшно, холодно и так одиноко, волей не волей, станешь холодной и недоступной.',
   },
@@ -94,12 +108,8 @@ const cats: CatsInterface[] = [
     year: '8',
     periodInShelter: 1,
     health: 'good',
-    temper: 'dddddddddddddddddddddddd',
-    qualities: [
-      '67rdca3eeb7f6fgeed471198',
-      '67rdca3eeb7f6fgeed471102',
-      '67rdca3eeb7f6fgeed471100',
-    ],
+    temper: 'Ласковая',
+    qualities: [qualities.strange, qualities.foodie],
     history:
       'Она грациозна, степенна и как Снежная Королева, кажется такой недоступной. Хотя, чему тут удивляться. Если жить долгое время на улице, где страшно, холодно и так одиноко, волей не волей, станешь холодной и недоступной.',
   },
@@ -111,12 +121,8 @@ const cats: CatsInterface[] = [
     year: '1',
     periodInShelter: 1,
     health: 'good',
-    temper: 'dddddddddddddddddddddddd',
-    qualities: [
-      '67rdca3eeb7f6fgeed471198',
-      '67rdca3eeb7f6fgeed471102',
-      '67rdca3eeb7f6fgeed471100',
-    ],
+    temper: 'Ласковая',
+    qualities: [qualities.strange, qualities.foodie],
     history:
       'Она грациозна, степенна и как Снежная Королева, кажется такой недоступной. Хотя, чему тут удивляться. Если жить долгое время на улице, где страшно, холодно и так одиноко, волей не волей, станешь холодной и недоступной.',
   },
@@ -128,12 +134,8 @@ const cats: CatsInterface[] = [
     year: '5',
     periodInShelter: 1,
     health: 'good',
-    temper: 'dddddddddddddddddddddddd',
-    qualities: [
-      '67rdca3eeb7f6fgeed471198',
-      '67rdca3eeb7f6fgeed471102',
-      '67rdca3eeb7f6fgeed471100',
-    ],
+    temper: 'Ласковая',
+    qualities: [qualities.strange, qualities.foodie],
     history:
       'Она грациозна, степенна и как Снежная Королева, кажется такой недоступной. Хотя, чему тут удивляться. Если жить долгое время на улице, где страшно, холодно и так одиноко, волей не волей, станешь холодной и недоступной.',
   },
@@ -145,12 +147,8 @@ const cats: CatsInterface[] = [
     year: '6',
     periodInShelter: 1,
     health: 'good',
-    temper: 'dddddddddddddddddddddddd',
-    qualities: [
-      '67rdca3eeb7f6fgeed471198',
-      '67rdca3eeb7f6fgeed471102',
-      '67rdca3eeb7f6fgeed471100',
-    ],
+    temper: 'Добрая',
+    qualities: [qualities.strange, qualities.foodie],
     history:
       'Она грациозна, степенна и как Снежная Королева, кажется такой недоступной. Хотя, чему тут удивляться. Если жить долгое время на улице, где страшно, холодно и так одиноко, волей не волей, станешь холодной и недоступной.',
   },
@@ -162,12 +160,8 @@ const cats: CatsInterface[] = [
     year: '3',
     periodInShelter: 1,
     health: 'good',
-    temper: 'dddddddddddddddddddddddd',
-    qualities: [
-      '67rdca3eeb7f6fgeed471198',
-      '67rdca3eeb7f6fgeed471102',
-      '67rdca3eeb7f6fgeed471100',
-    ],
+    temper: 'Ласковая',
+    qualities: [qualities.strange, qualities.foodie],
     history:
       'Она грациозна, степенна и как Снежная Королева, кажется такой недоступной. Хотя, чему тут удивляться. Если жить долгое время на улице, где страшно, холодно и так одиноко, волей не волей, станешь холодной и недоступной.',
   },
@@ -179,12 +173,8 @@ const cats: CatsInterface[] = [
     year: '4',
     periodInShelter: 1,
     health: 'good',
-    temper: 'dddddddddddddddddddddddd',
-    qualities: [
-      '67rdca3eeb7f6fgeed471198',
-      '67rdca3eeb7f6fgeed471102',
-      '67rdca3eeb7f6fgeed471100',
-    ],
+    temper: 'Ласковая',
+    qualities: [qualities.strange, qualities.foodie],
     history:
       'Она грациозна, степенна и как Снежная Королева, кажется такой недоступной. Хотя, чему тут удивляться. Если жить долгое время на улице, где страшно, холодно и так одиноко, волей не волей, станешь холодной и недоступной.',
   },
