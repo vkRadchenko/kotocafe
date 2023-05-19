@@ -1,10 +1,10 @@
 import BreedFilter from './breedFilter'
 import SexFilter from './sexFilter/sexFilter'
 import Button from 'components/ui/button/button'
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
 
 type catsFilter = {
-  onCatSelect: (params: any) => void
+  onCatSelect: (params: { [key: string]: string }) => void
 }
 
 const Filter: React.FC<catsFilter> = ({ onCatSelect }) => {
