@@ -1,4 +1,6 @@
-const initialCats = [
+import { CatsInterface } from 'components/types/catsInterface'
+
+const cats: CatsInterface[] = [
   {
     id: '67rdca3eeb7f6fgeed471815',
     name: 'Пуша',
@@ -188,4 +190,17 @@ const initialCats = [
   },
 ]
 
-export default initialCats
+const fetchAll = () =>
+  new Promise<any>((resolve) => {
+    window.setTimeout(function () {
+      resolve(cats)
+    })
+  })
+
+const getById = (id: string) =>
+  new Promise<any>((resolve) => {
+    window.setTimeout(function () {
+      resolve(cats.find((cat) => cat.id === id))
+    })
+  })
+export default { fetchAll, getById }
