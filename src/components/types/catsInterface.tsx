@@ -1,3 +1,5 @@
+import { CatQualities } from './catQualities'
+
 export interface CatsInterface {
   id: string
   name: string
@@ -7,6 +9,6 @@ export interface CatsInterface {
   periodInShelter: number
   health: string
   temper: string
-  qualities?: Array<string>
+  qualities?: CatQualities[]
   history: string
 }
