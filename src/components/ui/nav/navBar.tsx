@@ -1,5 +1,5 @@
 import lpgpPng from './img/cat_logo.png'
-import { Logo } from './styled'
+import { LoginWrap, Logo } from './styled'
 import { Link } from 'react-router-dom'
 const NavBar: React.FC = () => {
   return (
@@ -25,7 +25,11 @@ const NavBar: React.FC = () => {
             </Link>
           </li>
         </ul>
-        <div className="d-flex">Login</div>
+        <div className="d-flex">
+          <Link className="nav-link" to="/login">
+            <LoginWrap>Login</LoginWrap>
+          </Link>
+        </div>
       </div>
     </nav>
   )
