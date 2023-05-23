@@ -7,6 +7,7 @@ import Footer from 'components/blocks/footer/footer'
 import { Routes, Route } from 'react-router-dom'
 import CatDetalPage from 'components/pages/catDetalPage/catDetalPage'
 import Cats from './layout/cats/cats'
+import Login from 'layout/login/login'
 
 function App(): JSX.Element {
   return (
@@ -19,6 +20,7 @@ function App(): JSX.Element {
           <Route path="/cats/:catId?" element={<Cats />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFoundPage />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
         <Footer />
       </PageWrapper>
