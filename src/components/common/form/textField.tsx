@@ -26,7 +26,6 @@ const TextField: React.FC<TextFieldProps> = ({
   const toggleShowPassword = () => {
     setShowPassword((prevState) => !prevState)
   }
-  console.log(error)
 
   const getInputClasses = () => {
     return 'form-control' + (error ? ' is-invalid' : '')
