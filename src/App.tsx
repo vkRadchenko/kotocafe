@@ -5,7 +5,6 @@ import Contact from 'layout/contact/contact'
 import Header from 'features/header/header'
 import Footer from 'components/blocks/footer/footer'
 import { Routes, Route } from 'react-router-dom'
-import CatDetalPage from 'components/pages/catDetalPage/catDetalPage'
 import Cats from './layout/cats/cats'
 import Login from 'layout/login/login'
 
@@ -17,10 +16,10 @@ function App(): JSX.Element {
         <Header />
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path="/cats/:catId?" element={<Cats />} />
+          <Route path="/cats/:catId?/:edit?" element={<Cats />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/login/:type?" element={<Login />} />
           <Route path="*" element={<NotFoundPage />} />
-          <Route path="/login" element={<Login />} />
         </Routes>
         <Footer />
       </PageWrapper>
