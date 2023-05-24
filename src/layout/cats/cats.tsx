@@ -2,15 +2,20 @@ import { useParams } from 'react-router-dom'
 import { CatsWrapper } from './styled'
 import CatsListPage from 'components/pages/catsListPage/catsListPage'
 import CatDetalPage from 'components/pages/catDetalPage/catDetalPage'
+import EditCatPage from 'components/pages/editCatPage/editCatPage'
 
 const Cats: React.FC = () => {
   const params = useParams()
-  const { catId } = params
+  const { catId, edit } = params
 
   return (
     <>
       {catId ? (
-        <CatDetalPage catId={catId} />
+        edit ? (
+          <EditCatPage />
+        ) : (
+          <CatDetalPage catId={catId} />
+        )
       ) : (
         <CatsWrapper>
           <div className="container">
