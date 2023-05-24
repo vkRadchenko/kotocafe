@@ -10,8 +10,8 @@ export interface ValidatorConfig {
 interface Data {
   email: string
   password: string
-  stayOn: boolean
-  [key: string]: string | boolean
+  stayOn?: boolean
+  [key: string]: string | boolean | undefined
 }
 
 export function validator(
