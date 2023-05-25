@@ -6,4 +6,3 @@ export interface CatQualities {
 export interface Qualities {
   [key: string]: CatQualities
 }
-  
