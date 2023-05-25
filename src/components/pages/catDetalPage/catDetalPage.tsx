@@ -67,7 +67,7 @@ const CatDetalPage: React.FC<CatDetalProps> = ({ catId }) => {
               </div>
               <div className="mt-2">
                 <h5>Качества</h5>
-                <div>
+                {/*     <div>
                   {currentCat?.qualities?.map((qual: CatQualities) => (
                     <span
                       key={qual._id}
@@ -76,7 +76,7 @@ const CatDetalPage: React.FC<CatDetalProps> = ({ catId }) => {
                       {qual.name}
                     </span>
                   ))}
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
