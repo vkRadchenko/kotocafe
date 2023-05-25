@@ -3,11 +3,13 @@ import CardCat from 'components/common/cardCat/cardCat'
 import Pagination from 'components/common/pagination'
 import { paginate } from 'utils/paginate'
 import Filter from 'components/blocks/filter/filter'
-import api from 'mockData'
 import { CatsInterface } from 'components/types/catsInterface'
+import { useCat } from 'hooks/useCat'
 
 const CatsListPage: React.FC = () => {
-  const [cat, setCat] = useState<CatsInterface[]>()
+  //const [cat, setCat] = useState<CatsInterface[]>()
+  const { cats }: any = useCat()
+
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [filteredCatData, setFilteredCatData] = useState<{
     [key: string]: string
@@ -15,9 +17,6 @@ const CatsListPage: React.FC = () => {
     sex: '',
     breed: '',
   })
-  useEffect(() => {
-    api.cats.fetchAll().then((data) => setCat(data))
-  }, [])
 
   const pageSize = 6
 
@@ -29,16 +28,15 @@ const CatsListPage: React.FC = () => {
     setFilteredCatData(params)
   }
 
-  if (cat?.length !== 0) {
-    const filteredCat = (cat: CatsInterface[]) => {
-      const sexItem = cat?.filter((cats) => cats.sex === filteredCatData.sex)
-      const breedItem = cat?.filter(
-        (cats) => cats.breed === filteredCatData.breed
+  if (cats?.length !== 0) {
+    const filteredCat = (cats: CatsInterface[]) => {
+      const sexItem = cats?.filter((cat) => cat.sex === filteredCatData.sex)
+      const breedItem = cats?.filter(
+        (cat) => cat.breed === filteredCatData.breed
       )
-      const allFilter = cat?.filter(
-        (cats) =>
-          cats.sex === filteredCatData.sex &&
-          cats.breed === filteredCatData.breed
+      const allFilter = cats?.filter(
+        (cat) =>
+          cat.sex === filteredCatData.sex && cat.breed === filteredCatData.breed
       )
 
       if (filteredCatData.sex !== '' && filteredCatData.breed === '')
@@ -47,10 +45,10 @@ const CatsListPage: React.FC = () => {
         return allFilter
       if (filteredCatData.breed !== '' && filteredCatData.sex === '')
         return breedItem
-      else return cat
+      else return cats
     }
 
-    const filteredCatsList = filteredCat(cat as CatsInterface[])
+    const filteredCatsList = filteredCat(cats as CatsInterface[])
     const count = filteredCatsList?.length
 
     const cropCatsList = paginate(filteredCatsList, currentPage, pageSize)
@@ -73,14 +71,14 @@ const CatsListPage: React.FC = () => {
                     history={cat.history}
                     periodInShelter={cat.periodInShelter}
                     sex={cat.sex}
-                    key={cat.id}
-                    id={cat.id}
+                    key={cat._id}
+                    id={cat._id}
                   />
                 ))}
               </div>
             </div>
           </div>
-          {cat && (
+          {cats && (
             <Pagination
               currentPage={currentPage}
               itemsCount={count}

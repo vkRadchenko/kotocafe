@@ -7,6 +7,7 @@ import Footer from 'components/blocks/footer/footer'
 import { Routes, Route } from 'react-router-dom'
 import Cats from './layout/cats/cats'
 import Login from 'layout/login/login'
+import { ToastContainer } from 'react-toastify'
 
 function App(): JSX.Element {
   return (
@@ -23,6 +24,7 @@ function App(): JSX.Element {
         </Routes>
         <Footer />
       </PageWrapper>
+      <ToastContainer />
     </>
   )
 }
