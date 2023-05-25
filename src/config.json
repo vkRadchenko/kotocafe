@@ -1,3 +1,4 @@
 {
-  "apiEndPoint": "https://fast-comp-fire-default-rtdb.europe-west1.firebasedatabase.app/"
+  "apiEndPoint": "https://kotokafe-firebase-default-rtdb.europe-west1.firebasedatabase.app/",
+  "isFireBase": true
 }
