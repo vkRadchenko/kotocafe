@@ -36,7 +36,7 @@ const qualities: Qualities = {
 
 const cats: CatsInterface[] = [
   {
-    id: '67rdca3eeb7f6fgeed471815',
+    _id: '67rdca3eeb7f6fgeed471815',
     name: 'Пуша',
     breed: 'Дворовая',
     sex: 'Кошка',
@@ -44,12 +44,12 @@ const cats: CatsInterface[] = [
     periodInShelter: 1,
     health: 'good',
     temper: 'Добрая',
-    qualities: [qualities.strange, qualities.foodie],
+    qualities: ['67rdca3eeb7f6fgeed471100', '67rdca3eeb7f6fgeed471101'],
     history:
       'Она грациозна, степенна и как Снежная Королева, кажется такой недоступной. Хотя, чему тут удивляться. Если жить долгое время на улице, где страшно, холодно и так одиноко, волей не волей, станешь холодной и недоступной. Она грациозна, степенна и как Снежная Королева, кажется такой недоступной. Хотя, чему тут удивляться. Если жить долгое время на улицеОна грациозна, степенна и как Снежная Королева, кажется такой недоступной. Хотя, чему тут удивляться. Если жить долгое время на улице',
   },
   {
-    id: '67rdca3eeb7f6fgeed471816',
+    _id: '67rdca3eeb7f6fgeed471816',
     name: 'Пуша',
     breed: 'Дворовая',
     sex: 'Кошка',
@@ -57,12 +57,12 @@ const cats: CatsInterface[] = [
     periodInShelter: 1,
     health: 'good',
     temper: 'Ласковая',
-    qualities: [qualities.strange, qualities.foodie],
+    qualities: ['67rdca3eeb7f6fgeed471100'],
     history:
       'Она грациозна, степенна и как Снежная Королева, кажется такой недоступной. Хотя, чему тут удивляться. Если жить долгое время на улице',
   },
   {
-    id: '67rdca3eeb7f6fgeed471817',
+    _id: '67rdca3eeb7f6fgeed471817',
     name: 'Пуша',
     breed: 'Сфинкс',
     sex: 'Кот',
@@ -70,12 +70,12 @@ const cats: CatsInterface[] = [
     periodInShelter: 1,
     health: 'good',
     temper: 'Любит детей',
-    qualities: [qualities.strange, qualities.foodie],
+    qualities: ['67rdca3eeb7f6fgeed471100'],
     history:
       'Она грациозна, степенна и как Снежная Королева, кажется такой недоступной. Хотя, чему тут удивляться. Если жить долгое время на улице, где страшно, холодно и так одиноко, волей не волей, станешь холодной и недоступной.',
   },
   {
-    id: '67rdca3eeb7f6fgeed471818',
+    _id: '67rdca3eeb7f6fgeed471818',
     name: 'Пуша',
     breed: 'Сфинкс',
     sex: 'Кот',
@@ -83,12 +83,12 @@ const cats: CatsInterface[] = [
     periodInShelter: 1,
     health: 'good',
     temper: 'Добрая',
-    qualities: [qualities.strange, qualities.foodie],
+    qualities: ['67rdca3eeb7f6fgeed471100'],
     history:
       'Она грациозна, степенна и как Снежная Королева, кажется такой недоступной. Хотя, чему тут удивляться. Если жить долгое время на улице, где страшно, холодно и так одиноко, волей не волей, станешь холодной и недоступной.',
   },
   {
-    id: '67rdca3eeb7f6fgeed471819',
+    _id: '67rdca3eeb7f6fgeed471819',
     name: 'Пуша',
     breed: 'Дворовая',
     sex: 'Кот',
@@ -96,12 +96,12 @@ const cats: CatsInterface[] = [
     periodInShelter: 1,
     health: 'good',
     temper: 'Добрая',
-    qualities: [qualities.strange, qualities.foodie],
+    qualities: ['67rdca3eeb7f6fgeed471100'],
     history:
       'Она грациозна, степенна и как Снежная Королева, кажется такой недоступной. Хотя, чему тут удивляться. Если жить долгое время на улице, где страшно, холодно и так одиноко, волей не волей, станешь холодной и недоступной.',
   },
   {
-    id: '67rdca3eeb7f6fgeed471820',
+    _id: '67rdca3eeb7f6fgeed471820',
     name: 'Пуша',
     breed: 'Сфинкс',
     sex: 'Кошка',
@@ -109,12 +109,12 @@ const cats: CatsInterface[] = [
     periodInShelter: 1,
     health: 'good',
     temper: 'Ласковая',
-    qualities: [qualities.strange, qualities.foodie],
+    qualities: ['67rdca3eeb7f6fgeed471100'],
     history:
       'Она грациозна, степенна и как Снежная Королева, кажется такой недоступной. Хотя, чему тут удивляться. Если жить долгое время на улице, где страшно, холодно и так одиноко, волей не волей, станешь холодной и недоступной.',
   },
   {
-    id: '67rdca3eeb7f6fgeed471821',
+    _id: '67rdca3eeb7f6fgeed471821',
     name: 'Пуша',
     breed: 'Дворовая',
     sex: 'Кошка',
@@ -122,12 +122,12 @@ const cats: CatsInterface[] = [
     periodInShelter: 1,
     health: 'good',
     temper: 'Ласковая',
-    qualities: [qualities.strange, qualities.foodie],
+    qualities: ['67rdca3eeb7f6fgeed471100'],
     history:
       'Она грациозна, степенна и как Снежная Королева, кажется такой недоступной. Хотя, чему тут удивляться. Если жить долгое время на улице, где страшно, холодно и так одиноко, волей не волей, станешь холодной и недоступной.',
   },
   {
-    id: '67rdca3eeb7f6fgeed471822',
+    _id: '67rdca3eeb7f6fgeed471822',
     name: 'Пуша',
     breed: 'Сфинкс',
     sex: 'Кот',
@@ -135,12 +135,12 @@ const cats: CatsInterface[] = [
     periodInShelter: 1,
     health: 'good',
     temper: 'Ласковая',
-    qualities: [qualities.strange, qualities.foodie],
+    qualities: ['67rdca3eeb7f6fgeed471100'],
     history:
       'Она грациозна, степенна и как Снежная Королева, кажется такой недоступной. Хотя, чему тут удивляться. Если жить долгое время на улице, где страшно, холодно и так одиноко, волей не волей, станешь холодной и недоступной.',
   },
   {
-    id: '67rdca3eeb7f6fgeed471823',
+    _id: '67rdca3eeb7f6fgeed471823',
     name: 'Пуша',
     breed: 'Дворовая',
     sex: 'Кот',
@@ -148,12 +148,12 @@ const cats: CatsInterface[] = [
     periodInShelter: 1,
     health: 'good',
     temper: 'Добрая',
-    qualities: [qualities.strange, qualities.foodie],
+    qualities: ['67rdca3eeb7f6fgeed471100'],
     history:
       'Она грациозна, степенна и как Снежная Королева, кажется такой недоступной. Хотя, чему тут удивляться. Если жить долгое время на улице, где страшно, холодно и так одиноко, волей не волей, станешь холодной и недоступной.',
   },
   {
-    id: '67rdca3eeb7f6fgeed471824',
+    _id: '67rdca3eeb7f6fgeed471824',
     name: 'Пуша',
     breed: 'Сфинкс',
     sex: 'Кошка',
@@ -161,12 +161,12 @@ const cats: CatsInterface[] = [
     periodInShelter: 1,
     health: 'good',
     temper: 'Ласковая',
-    qualities: [qualities.strange, qualities.foodie],
+    qualities: ['67rdca3eeb7f6fgeed471100'],
     history:
       'Она грациозна, степенна и как Снежная Королева, кажется такой недоступной. Хотя, чему тут удивляться. Если жить долгое время на улице, где страшно, холодно и так одиноко, волей не волей, станешь холодной и недоступной.',
   },
   {
-    id: '67rdca3eeb7f6fgeed471825',
+    _id: '67rdca3eeb7f6fgeed471825',
     name: 'Пуша',
     breed: 'Сфинкс',
     sex: 'Кошка',
@@ -174,7 +174,7 @@ const cats: CatsInterface[] = [
     periodInShelter: 1,
     health: 'good',
     temper: 'Ласковая',
-    qualities: [qualities.strange, qualities.foodie],
+    qualities: ['67rdca3eeb7f6fgeed471100'],
     history:
       'Она грациозна, степенна и как Снежная Королева, кажется такой недоступной. Хотя, чему тут удивляться. Если жить долгое время на улице, где страшно, холодно и так одиноко, волей не волей, станешь холодной и недоступной.',
   },
@@ -190,7 +190,7 @@ const fetchAll = () =>
 const getById = (id: string) =>
   new Promise<any>((resolve) => {
     window.setTimeout(function () {
-      resolve(cats.find((cat) => cat.id === id))
+      resolve(cats.find((cat) => cat._id === id))
     })
   })
 export default { fetchAll, getById }
