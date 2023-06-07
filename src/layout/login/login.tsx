@@ -14,13 +14,12 @@ const Login: React.FC = () => {
       prevState === 'register' ? 'login' : 'register'
     )
   }
-  console.log(type)
 
   return (
     <div className="container d-flex align-items-center flex-grow-1">
       <div className="mx-auto col-md-5 ofset-md-3 shadow p-4">
         <h3 className="mb-4">
-          {formType === 'register' ? 'Register' : 'Login'}
+          {formType === 'register' ? 'Регистрация' : 'Вход'}
         </h3>
         {formType === 'register' ? (
           <>
