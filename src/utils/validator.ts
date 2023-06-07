@@ -8,9 +8,6 @@ export interface ValidatorConfig {
 }
 
 interface Data {
-  email: string
-  password: string
-  stayOn?: boolean
   [key: string]: string | boolean | undefined
 }
 
@@ -18,7 +15,11 @@ export function validator(
   data: Data,
   config: ValidatorConfig
 ): { [fieldName: string]: string } {
-  const errors: { [fieldName: string]: string } = { email: '', password: '' }
+  const errors: { [fieldName: string]: string } = {
+    email: '',
+    password: '',
+    name: '',
+  }
 
   function validate(
     validateMethod: string,
