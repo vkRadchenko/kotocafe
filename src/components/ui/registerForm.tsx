@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import { validator } from 'utils/validator'
-import CheckBoxField from 'components/common/form/checkBoxField'
 import TextField from 'components/common/form/textField'
+import { useAuth } from 'hooks/useAuth'
+import { useNavigate } from 'react-router-dom'
 
 const RegisterForm: React.FC = () => {
+  const navigate = useNavigate()
   const [data, setData] = useState({
+    name: '',
     email: '',
     password: '',
   })
+  const { signUp }: any = useAuth()
 
   const [errors, setErrors] = useState<{ [fieldName: string]: string }>({
+    name: '',
     email: '',
     password: '',
   })
@@ -20,10 +25,16 @@ const RegisterForm: React.FC = () => {
       ...prevState,
       [target.name]: target.value,
     }))
+
     //setEnterError(null)
   }
 
   const validatorConfig = {
+    name: {
+      isRequired: {
+        message: 'Поле обязательно для заполнения',
+      },
+    },
     email: {
       isRequired: {
         message: 'Электронная почта обязательна для заполнения',
@@ -35,6 +46,16 @@ const RegisterForm: React.FC = () => {
     password: {
       isRequired: {
         message: 'Пароль обязателен для заполнения',
+      },
+      isCapitalSymbol: {
+        message: 'Пароль должен содержать хотя бы одну заглавную букву',
+      },
+      isContainDigit: {
+        message: 'Пароль должен содержать хотя бы одно число',
+      },
+      min: {
+        message: 'Пароль должен состоять минимум из 8 символов',
+        value: 8,
       },
     },
   }
@@ -51,14 +72,26 @@ const RegisterForm: React.FC = () => {
 
   const isValid = Object.values(errors).every((str) => str === '')
 
-  const handleSubmit = (e: React.SyntheticEvent) => {
+  const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault()
     const isValid = validate()
     if (!isValid) return
-    console.log(data)
+    try {
+      await signUp(data)
+      navigate('/')
+    } catch (error: any) {
+      setErrors(error)
+    }
   }
   return (
     <form onSubmit={handleSubmit}>
+      <TextField
+        label="Ваше имя"
+        name="name"
+        value={data.name}
+        onChange={handleChange}
+        error={errors.name}
+      />
       <TextField
         label="Электронная почта"
         name="email"
