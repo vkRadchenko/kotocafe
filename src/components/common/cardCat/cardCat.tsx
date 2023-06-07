@@ -1,14 +1,13 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { CardImage, CardWrapper, Like } from './styled'
-import { CatsInterface } from 'components/types/catsInterface'
-
 interface CardCat {
   name: string
   history: string
-  periodInShelter: number
+  periodInShelter: any
   sex: string
   id: string
+  image: string
 }
 
 const CardCat: React.FC<CardCat> = ({
@@ -17,9 +16,12 @@ const CardCat: React.FC<CardCat> = ({
   periodInShelter,
   sex,
   id,
+  image,
 }) => {
   const [favorits, setFavorits] = useState(false)
+
   const navigate = useNavigate()
+
   const handleHeartClick = () => {
     setFavorits((prevState) => !prevState)
   }
@@ -29,16 +31,12 @@ const CardCat: React.FC<CardCat> = ({
 
   return (
     <>
-      <div className="col">
+      <div className="col-lg-4 col-md-6 col-sm-12 mb-3">
         <CardWrapper
           className="card h-100 position-relative"
           onClick={handleCardClick}
         >
-          <CardImage
-            src={require('../../../img/base_87716f252d.jpg')}
-            className="card-img-top"
-            alt="..."
-          />
+          <CardImage src={image} className="card-img-top" alt="..." />
           <Like
             onClick={handleHeartClick}
             className={`bi ${
@@ -57,9 +55,7 @@ const CardCat: React.FC<CardCat> = ({
             <p className="card-text ">{history}</p>
           </div>
           <div className="card-footer bg-white">
-            <small className="text-body-secondary">
-              Находится в приюте {periodInShelter} год
-            </small>
+            <small className="text-body-secondary">{periodInShelter}</small>
           </div>
         </CardWrapper>
       </div>
