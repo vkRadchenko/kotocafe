@@ -6,9 +6,10 @@ export interface CatsInterface {
   breed: string
   sex: string
   year: string
-  periodInShelter: number
+  create_at: number
   health: string
   temper: string
   qualities?: Array<string>
   history: string
+  image: string
 }
