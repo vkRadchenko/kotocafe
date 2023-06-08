@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState} from 'react'
 import CardCat from 'components/common/cardCat/cardCat'
 import Pagination from 'components/common/pagination'
 import { paginate } from 'utils/paginate'
 import Filter from 'components/blocks/filter/filter'
 import { CatsInterface } from 'components/types/catsInterface'
 import { useCat } from 'hooks/useCat'
+import { displayDate } from 'utils/displayDate'
 
 const CatsListPage: React.FC = () => {
-  //const [cat, setCat] = useState<CatsInterface[]>()
   const { cats }: any = useCat()
-
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [filteredCatData, setFilteredCatData] = useState<{
     [key: string]: string
@@ -23,7 +22,6 @@ const CatsListPage: React.FC = () => {
   const handlePageChange = (pageIndex: number) => {
     setCurrentPage(pageIndex)
   }
-
   const handleFilterSelect = (params: { [key: string]: string }) => {
     setFilteredCatData(params)
   }
@@ -59,20 +57,21 @@ const CatsListPage: React.FC = () => {
           <div className="row">
             <div
               style={{ height: 'fit-content' }}
-              className="col-3 border rounded pt-3 pb-3"
+              className="col-lg-3 border rounded pt-3 pb-3 mb-4"
             >
               <Filter onCatSelect={handleFilterSelect} />
             </div>
-            <div className="col-9">
-              <div className="row row-cols-1 row-cols-md-3 g-4">
+            <div className="col-lg-9">
+              <div className="row">
                 {cropCatsList?.map((cat: CatsInterface) => (
                   <CardCat
                     name={cat.name}
                     history={cat.history}
-                    periodInShelter={cat.periodInShelter}
+                    periodInShelter={displayDate(cat.create_at)}
                     sex={cat.sex}
                     key={cat._id}
                     id={cat._id}
+                    image={cat.image}
                   />
                 ))}
               </div>

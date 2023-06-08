@@ -10,7 +10,8 @@ export const CardWrapper = styled.div`
 
 export const CardImage = styled.img`
   width: 100%;
-  object-fit: scale-down;
+  height: 200px;
+  object-fit: cover;
 `
 export const Like = styled.i`
   position: absolute;

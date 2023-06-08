@@ -8,20 +8,38 @@ import { Routes, Route } from 'react-router-dom'
 import Cats from './layout/cats/cats'
 import Login from 'layout/login/login'
 import { ToastContainer } from 'react-toastify'
+import AuthProvider from 'hooks/useAuth'
+import LogOut from 'layout/logOut/logOut'
+import CreateCat from 'layout/createCat/createCat'
+import { CatProvider } from 'hooks/useCat'
+import { QualitiesProvider } from 'hooks/useQualities'
+import UserDetalPage from 'components/pages/userDetalPage/userDetalPage'
 
 function App(): JSX.Element {
   return (
     <>
       <AppStyles />
       <PageWrapper>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/cats/:catId?/:edit?" element={<Cats />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/login/:type?" element={<Login />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
+        <AuthProvider>
+          <CatProvider>
+            <QualitiesProvider>
+              <Header />
+              <Routes>
+                <Route path="/" element={<Main />} />
+                <Route path="/cats/:catId?/:edit?" element={<Cats />} />
+                <Route
+                  path="/users/:userId?/:edit?"
+                  element={<UserDetalPage />}
+                />
+                <Route path="/additem" element={<CreateCat />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/login/:type?" element={<Login />} />
+                <Route path="/logout" element={<LogOut />} />
+                <Route path="*" element={<NotFoundPage />} />
+              </Routes>
+            </QualitiesProvider>
+          </CatProvider>
+        </AuthProvider>
         <Footer />
       </PageWrapper>
       <ToastContainer />

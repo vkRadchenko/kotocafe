@@ -1,7 +1,11 @@
+import { useAuth } from 'hooks/useAuth'
 import lpgpPng from './img/cat_logo.png'
 import { LoginWrap, Logo } from './styled'
 import { Link } from 'react-router-dom'
+import NavProfile from '../navProfile'
+
 const NavBar: React.FC = () => {
+  const { currentUser }: any = useAuth()
   return (
     <nav className="navbar bg-light">
       <div className="container">
@@ -25,10 +29,21 @@ const NavBar: React.FC = () => {
             </Link>
           </li>
         </ul>
-        <div className="d-flex">
-          <Link className="nav-link" to="/login">
-            <LoginWrap>Login</LoginWrap>
-          </Link>
+        <div className="d-flex align-items-center justify-content-between">
+          {currentUser ? (
+            <>
+              <Link to={'/additem'}>
+                <button className="btn btn-sm btn-primary me-3">
+                  Добавить животное
+                </button>
+              </Link>
+              <NavProfile />
+            </>
+          ) : (
+            <Link className="nav-link" to="/login">
+              <LoginWrap>Войти</LoginWrap>
+            </Link>
+          )}
         </div>
       </div>
     </nav>

@@ -5,7 +5,7 @@ interface TextFieldProps {
   type?: string
   name: string
   value: string | boolean
-  error: string
+  error?: string
   onChange: (params: { name: string; value: string | boolean }) => void
 }
 
