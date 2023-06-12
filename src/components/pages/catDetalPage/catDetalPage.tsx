@@ -4,6 +4,7 @@ import { Carousel } from 'react-responsive-carousel'
 import ifd from '../../../img/IMG_9983.jpg'
 import { BlockAboutCat } from './styled'
 import { useCat } from 'hooks/useCat'
+import QualitiesList from 'components/ui/qualities/qualitiesList'
 
 type CatDetalProps = {
   catId: string
@@ -22,15 +23,15 @@ const CatDetalPage: React.FC<CatDetalProps> = ({ catId }) => {
             <div className="overflow-hidden col-lg-8">
               <Carousel>
                 <div>
-                  <img src={ifd} />
+                  <img src={ifd} alt="" />
                   <p className="legend">Legend 1</p>
                 </div>
                 <div>
-                  <img src={ifd} />
+                  <img src={ifd} alt="" />
                   <p className="legend">Legend 2</p>
                 </div>
                 <div>
-                  <img src={ifd} />
+                  <img src={ifd} alt="" />
                   <p className="legend">Legend 3</p>
                 </div>
               </Carousel>
@@ -38,22 +39,16 @@ const CatDetalPage: React.FC<CatDetalProps> = ({ catId }) => {
             <div className="col-lg-4">
               <div>
                 <h2>{currentCat?.name}</h2>
-                <span>Возраст: {currentCat?.year} год</span>
+                <span>Возраст: {currentCat?.age} год</span>
               </div>
               <div className="mt-2">
                 <h5>Порода</h5>
                 <p>{currentCat?.breed}</p>
               </div>
               <div className="mt-2">
-                <h5>Находится в приюте</h5>
-                <p>{currentCat?.periodInShelter} месяц</p>
-              </div>
-              <div className="mt-2">
                 <h5>Здоровье</h5>
                 <div>
-                  <span className="badge text-bg-success">
-                    {currentCat?.health}
-                  </span>
+                  <p>{currentCat?.health}</p>
                 </div>
               </div>
               <div className="mt-2">
@@ -63,11 +58,7 @@ const CatDetalPage: React.FC<CatDetalProps> = ({ catId }) => {
               <div className="mt-2">
                 <h5>Качества</h5>
                 <div>
-                  {/*  {currentCat?.qualities?.map((qual: any) => (
-                    <span className={`me-1 badge text-bg-${qual.color}`}>
-                      {qual.name}
-                    </span>
-                  ))} */}
+                  <QualitiesList qualities={currentCat.qualities} />
                 </div>
               </div>
             </div>
