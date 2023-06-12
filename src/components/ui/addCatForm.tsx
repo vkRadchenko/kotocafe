@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import { validator } from 'utils/validator'
+import React, { useState } from 'react'
 import TextField from 'components/common/form/textField'
 import { useNavigate } from 'react-router-dom'
 import TextAreaField from 'components/common/form/textAreaField'
@@ -7,7 +6,8 @@ import RadioField from 'components/common/form/radioField'
 import { useCat } from 'hooks/useCat'
 import RangeField from 'components/common/form/rangeField'
 import MultiSelectField from 'components/common/form/multiSelectField'
-import { useQualities } from 'hooks/useQualities'
+import { useSelector } from 'react-redux'
+import { getQualities } from 'store/qualities'
 
 export interface Data {
   name: string
@@ -32,12 +32,12 @@ const AddCatForm = () => {
     history: '',
     qualities: [],
   })
-  const { qualities }: any = useQualities()
-
   const navigate = useNavigate()
   const [errors, setErrors] = useState<{ [fieldName: string]: string }>({
     name: '',
   })
+
+  const qualities: any = useSelector(getQualities())
 
   const getQualitiesList = qualities.map((q: any) => ({
     label: q.name,
@@ -53,8 +53,12 @@ const AddCatForm = () => {
 
   const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault()
+    const newData = {
+      ...data,
+      qualities: data.qualities.map((q: any) => q.value),
+    }
     try {
-      await signUpCat(data)
+      await signUpCat(newData)
       navigate('/')
     } catch (error: any) {
       setErrors(error)
