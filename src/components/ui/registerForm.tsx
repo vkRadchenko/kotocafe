@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { validator } from 'utils/validator'
 import TextField from 'components/common/form/textField'
-import { useAuth } from 'hooks/useAuth'
-import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { signUp } from 'store/user'
 
 const RegisterForm: React.FC = () => {
-  const navigate = useNavigate()
+  const dispatch: any = useDispatch()
   const [data, setData] = useState({
     name: '',
     email: '',
     password: '',
   })
-  const { signUp }: any = useAuth()
 
   const [errors, setErrors] = useState<{ [fieldName: string]: string }>({
     name: '',
@@ -72,16 +71,11 @@ const RegisterForm: React.FC = () => {
 
   const isValid = Object.values(errors).every((str) => str === '')
 
-  const handleSubmit = async (e: React.SyntheticEvent) => {
+  const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault()
     const isValid = validate()
     if (!isValid) return
-    try {
-      await signUp(data)
-      navigate('/')
-    } catch (error: any) {
-      setErrors(error)
-    }
+    dispatch(signUp(data))
   }
   return (
     <form onSubmit={handleSubmit}>
