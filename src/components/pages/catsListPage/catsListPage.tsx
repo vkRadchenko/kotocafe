@@ -1,14 +1,15 @@
-import React, { useState} from 'react'
+import React, { useState } from 'react'
 import CardCat from 'components/common/cardCat/cardCat'
 import Pagination from 'components/common/pagination'
 import { paginate } from 'utils/paginate'
 import Filter from 'components/blocks/filter/filter'
 import { CatsInterface } from 'components/types/catsInterface'
-import { useCat } from 'hooks/useCat'
 import { displayDate } from 'utils/displayDate'
+import { useSelector } from 'react-redux'
+import { getCats } from 'store/cats'
 
 const CatsListPage: React.FC = () => {
-  const { cats }: any = useCat()
+  const cats = useSelector(getCats())
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [filteredCatData, setFilteredCatData] = useState<{
     [key: string]: string
