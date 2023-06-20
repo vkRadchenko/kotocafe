@@ -1,3 +1,5 @@
+import transformStringAge from 'utils/transformStringAge'
+
 interface RangeFieldProps {
   name: string
   label: string
@@ -26,13 +28,15 @@ const RangeField: React.FC<RangeFieldProps> = ({
             type="range"
             className="form-range"
             min="0"
-            max="25"
+            max="20"
             id="customRange2"
             value={value}
             onChange={handleChange}
           />
         </div>
-        <span className="d-flex ps-3">{`${value} год`}</span>
+        <span className="d-flex ps-3">{`${value} ${transformStringAge(
+          value
+        )}`}</span>
       </div>
     </div>
   )
