@@ -3,16 +3,17 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loa
 import { Carousel } from 'react-responsive-carousel'
 import ifd from '../../../img/IMG_9983.jpg'
 import { BlockAboutCat } from './styled'
-import { useCat } from 'hooks/useCat'
 import QualitiesList from 'components/ui/qualities/qualitiesList'
+import { useSelector } from 'react-redux'
+import { getCatById } from 'store/cats'
+import transformStringAge from 'utils/transformStringAge'
 
 type CatDetalProps = {
   catId: string
 }
 
 const CatDetalPage: React.FC<CatDetalProps> = ({ catId }) => {
-  const { getCatById }: any = useCat()
-  const currentCat = getCatById(catId)
+  const currentCat = useSelector(getCatById(catId))
 
   return (
     <>
@@ -39,7 +40,11 @@ const CatDetalPage: React.FC<CatDetalProps> = ({ catId }) => {
             <div className="col-lg-4">
               <div>
                 <h2>{currentCat?.name}</h2>
-                <span>Возраст: {currentCat?.age} год</span>
+                <span>
+                  {`
+                  Возраст: ${currentCat?.age}
+                  ${transformStringAge(currentCat?.age)}`}
+                </span>
               </div>
               <div className="mt-2">
                 <h5>Порода</h5>
@@ -58,7 +63,9 @@ const CatDetalPage: React.FC<CatDetalProps> = ({ catId }) => {
               <div className="mt-2">
                 <h5>Качества</h5>
                 <div>
-                  <QualitiesList qualities={currentCat.qualities} />
+                  {currentCat.qualities && (
+                    <QualitiesList qualities={currentCat.qualities} />
+                  )}
                 </div>
               </div>
             </div>
