@@ -1,15 +1,16 @@
 import { useState } from 'react'
-
-import { useAuth } from 'hooks/useAuth'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { getUser } from 'store/user'
 
 const NavProfile = () => {
-  const { currentUser }: any = useAuth()
+  const currentUser: any = useSelector(getUser())
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
   const hundleToggleMenu = () => {
     setIsOpen((prevState) => !prevState)
   }
+  if (!currentUser) return <>Loading...</>
   return (
     <div className="dropdown" onClick={hundleToggleMenu}>
       <div className="dropdown btn dropdown-toggle d-flex align-items-center">
