@@ -5,6 +5,7 @@ import {
   createSlice,
 } from '@reduxjs/toolkit'
 import qualitiesService from 'services/qualities.service'
+import isOutDated from 'utils/isOutDated'
 
 export interface QualityProps {
   _id: string
@@ -48,13 +49,6 @@ const qualitiesSlice = createSlice({
 const { reducer: qualitiesReducer, actions } = qualitiesSlice
 const { qualitiesRequested, qualitiesReceved, qualitiesRequestFiled } = actions
 
-function isOutDated(date: number) {
-  if (Date.now() - date > 10 * 60 * 1000) {
-    return true
-  }
-  return false
-}
-
 export const loadQualitiesList =
   () => async (dispatch: Dispatch<AnyAction>, getState: any) => {
     const { lastFetch } = getState().qualities
@@ -69,8 +63,9 @@ export const loadQualitiesList =
     }
   }
 
-export const getQualities = () => (state: { qualities: QualitiesState }) =>
-  state.qualities.entities
+export const getQualities = () => (state: { qualities: QualitiesState }) => {
+  return state.qualities.entities ? state.qualities.entities : null
+}
 export const qualitiesLoadingStatus =
   () => (state: { qualities: QualitiesState }) =>
     state.qualities.isLoading
