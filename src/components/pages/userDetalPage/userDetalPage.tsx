@@ -1,13 +1,14 @@
 import CardCat from 'components/common/cardCat/cardCat'
 import { CatsInterface } from 'components/types/catsInterface'
-import { useAuth } from 'hooks/useAuth'
-import { useCat } from 'hooks/useCat'
+import { useSelector } from 'react-redux'
+import { getCatByUserId } from 'store/cats'
+import { getCurrentUserId, getUser } from 'store/user'
 import { displayDate } from 'utils/displayDate'
 
 const UserDetalPage = () => {
-  const { getCatByUserId }: any = useCat()
-  const { currentUser }: any = useAuth()
-  const cats = getCatByUserId(currentUser._id)
+  const currentUser: any = useSelector(getUser())
+  const currentUserId: any = useSelector(getCurrentUserId())
+  const catsList: any = useSelector(getCatByUserId(currentUserId))
 
   return (
     <>
@@ -36,9 +37,9 @@ const UserDetalPage = () => {
             <div className="col-lg-9 ">
               <h4 className="mb-3">Мои объявления</h4>
               <div className="row">
-                {cats.length === 0
+                {catsList && catsList.length === 0
                   ? 'У вас еще нет ни одного объявления'
-                  : cats?.map((cat: CatsInterface) => (
+                  : catsList?.map((cat: CatsInterface) => (
                       <CardCat
                         name={cat.name}
                         history={cat.history}

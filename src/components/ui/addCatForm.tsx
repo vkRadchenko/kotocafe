@@ -1,64 +1,76 @@
-import React, { useState, useEffect } from 'react'
-import { validator } from 'utils/validator'
+import React, { useState, useCallback } from 'react'
 import TextField from 'components/common/form/textField'
-import { useNavigate } from 'react-router-dom'
 import TextAreaField from 'components/common/form/textAreaField'
 import RadioField from 'components/common/form/radioField'
-import { useCat } from 'hooks/useCat'
 import RangeField from 'components/common/form/rangeField'
 import MultiSelectField from 'components/common/form/multiSelectField'
-import { useQualities } from 'hooks/useQualities'
+import { getQualities } from 'store/qualities'
+import { useSelector, useDispatch } from 'react-redux'
+import { getCatImage, signUpCat } from 'store/cats'
+import { getCurrentUserId } from 'store/user'
+import { getBreeds } from 'store/breed'
 
 export interface Data {
   name: string
-  breed: string
+  breed: { label: string; value: string } | null
   sex: string
   age: string
   health: string
   temper: string
   history: string
   qualities: []
+  userId: string
 }
 
-const AddCatForm = () => {
-  const { signUpCat }: any = useCat()
-  const [data, setData] = useState({
+const AddCatForm: React.FC = () => {
+  const dispatch: any = useDispatch()
+  const qualities = useSelector(getQualities())
+  const breed = useSelector(getBreeds())
+  const currentUser = useSelector(getCurrentUserId())
+  const catImg = useSelector(getCatImage())
+
+  const [data, setData] = useState<Data>({
     name: '',
-    breed: '',
+    breed: null,
     sex: '',
     age: '0',
     health: '',
     temper: '',
     history: '',
     qualities: [],
-  })
-  const { qualities }: any = useQualities()
-
-  const navigate = useNavigate()
-  const [errors, setErrors] = useState<{ [fieldName: string]: string }>({
-    name: '',
+    userId: currentUser,
   })
 
-  const getQualitiesList = qualities.map((q: any) => ({
-    label: q.name,
-    value: q._id,
+  const getQualitiesList = qualities?.map(
+    (q: { name: string; _id: string }) => ({
+      label: q.name,
+      value: q._id,
+    })
+  )
+  const getBreedsList = breed?.map((b: { name: string; _id: string }) => ({
+    label: b.name,
+    value: b._id,
   }))
+  const handleChange = useCallback(
+    (target: { name: string; value: string | boolean }) => {
+      setData((prevState) => ({
+        ...prevState,
+        [target.name]: target.value,
+      }))
+    },
+    []
+  )
 
-  const handleChange = (target: { name: string; value: string | boolean }) => {
-    setData((prevState) => ({
-      ...prevState,
-      [target.name]: target.value,
-    }))
-  }
-
-  const handleSubmit = async (e: React.SyntheticEvent) => {
+  const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault()
-    try {
-      await signUpCat(data)
-      navigate('/')
-    } catch (error: any) {
-      setErrors(error)
+    const newData = {
+      ...data,
+      qualities: data.qualities.map((q: { value: string }) => q.value),
+      breed: data.breed?.label,
+      image: catImg,
     }
+
+    dispatch(signUpCat(newData))
   }
 
   return (
@@ -68,13 +80,15 @@ const AddCatForm = () => {
         name="name"
         value={data.name}
         onChange={handleChange}
-        error={errors.name}
       />
-      <TextField
-        label="Порода"
-        name="breed"
-        value={data.breed}
+      <MultiSelectField
+        options={getBreedsList}
         onChange={handleChange}
+        defaultValue={data.breed}
+        name="breed"
+        label="Выберите породу"
+        isMulti={false}
+        closeMenuOnSelect={true}
       />
       <RangeField
         label="Возраст"

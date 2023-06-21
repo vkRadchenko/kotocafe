@@ -6,7 +6,9 @@ interface MultiProps {
   onChange: (props: any) => void
   name: string
   label: string
-  defaultValue: string[]
+  defaultValue: any
+  isMulti?: boolean
+  closeMenuOnSelect?: boolean
 }
 
 const MultiSelectField: React.FC<MultiProps> = ({
@@ -15,6 +17,8 @@ const MultiSelectField: React.FC<MultiProps> = ({
   name,
   label,
   defaultValue,
+  isMulti = true,
+  closeMenuOnSelect = false,
 }) => {
   const optionsArray =
     !Array.isArray(options) && typeof options === 'object'
@@ -28,8 +32,8 @@ const MultiSelectField: React.FC<MultiProps> = ({
     <div className="mb-4">
       <label className="form-label">{label}</label>
       <Select
-        isMulti
-        closeMenuOnSelect={false}
+        isMulti={isMulti}
+        closeMenuOnSelect={closeMenuOnSelect}
         defaultValue={defaultValue}
         options={optionsArray}
         className="basic-multi-select"

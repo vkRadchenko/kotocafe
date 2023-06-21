@@ -1,16 +1,13 @@
-import Button from 'components/ui/button/button'
-import { useEffect, useState } from 'react'
-
-const breedCats = [
-  { key: 'Дворовая', name: 'Дворовая' },
-  { key: 'Сфинкс', name: 'Сфинкс' },
-]
+import { useSelector } from 'react-redux'
+import { getBreeds } from 'store/breed'
 
 type breedFilter = {
   onBreedChange: (params: string) => void
   clearFilter: string
 }
 const BreedFilter: React.FC<breedFilter> = ({ onBreedChange, clearFilter }) => {
+  const breed = useSelector(getBreeds())
+
   const handleBreedValue = (params: string) => {
     onBreedChange(params)
   }
@@ -25,8 +22,8 @@ const BreedFilter: React.FC<breedFilter> = ({ onBreedChange, clearFilter }) => {
         value={clearFilter}
       >
         <option value={''}>Любая порода</option>
-        {breedCats.map((breed) => (
-          <option key={'breed-' + breed.name} value={breed.key}>
+        {breed?.map((breed: any) => (
+          <option key={breed._id} value={breed.key}>
             {breed.name}
           </option>
         ))}

@@ -90,6 +90,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       }
     }
   }
+
   async function createUser(data: any) {
     try {
       const { content }: any = await userService.create(data)

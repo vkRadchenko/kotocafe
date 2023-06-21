@@ -3,15 +3,15 @@ import { CatsWrapper } from './styled'
 import CatsListPage from 'components/pages/catsListPage/catsListPage'
 import CatDetalPage from 'components/pages/catDetalPage/catDetalPage'
 import EditCatPage from 'components/pages/editCatPage/editCatPage'
-import { CatProvider } from 'hooks/useCat'
+
+import CatsLoader from 'components/ui/hoc/catsLoader'
 
 const Cats: React.FC = () => {
   const params = useParams()
   const { catId, edit } = params
-
   return (
     <>
-      <CatProvider>
+      <CatsLoader>
         {catId ? (
           edit ? (
             <EditCatPage />
@@ -31,7 +31,7 @@ const Cats: React.FC = () => {
             </div>
           </CatsWrapper>
         )}
-      </CatProvider>
+      </CatsLoader>
     </>
   )
 }

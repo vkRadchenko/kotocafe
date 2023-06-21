@@ -1,11 +1,12 @@
-import { useAuth } from 'hooks/useAuth'
 import lpgpPng from './img/cat_logo.png'
 import { LoginWrap, Logo } from './styled'
 import { Link } from 'react-router-dom'
 import NavProfile from '../navProfile'
+import { useSelector } from 'react-redux'
+import { getIsLoggedIn } from 'store/user'
 
 const NavBar: React.FC = () => {
-  const { currentUser }: any = useAuth()
+  const isLoggedIn = useSelector(getIsLoggedIn())
   return (
     <nav className="navbar bg-light">
       <div className="container">
@@ -30,7 +31,7 @@ const NavBar: React.FC = () => {
           </li>
         </ul>
         <div className="d-flex align-items-center justify-content-between">
-          {currentUser ? (
+          {isLoggedIn ? (
             <>
               <Link to={'/additem'}>
                 <button className="btn btn-sm btn-primary me-3">

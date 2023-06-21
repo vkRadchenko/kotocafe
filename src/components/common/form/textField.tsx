@@ -26,7 +26,6 @@ const TextField: React.FC<TextFieldProps> = ({
   const toggleShowPassword = () => {
     setShowPassword((prevState) => !prevState)
   }
-
   const getInputClasses = () => {
     return 'form-control' + (error ? ' is-invalid' : '')
   }
@@ -59,4 +58,4 @@ const TextField: React.FC<TextFieldProps> = ({
   )
 }
 
-export default TextField
+export default React.memo(TextField)
