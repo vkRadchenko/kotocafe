@@ -7,7 +7,4 @@ export const FooterWrapper = styled.footer`
   background-color: #f8f9fa;
   color: #202020;
   height: 40px;
-  > :last-child {
-    cursor: pointer;
-  }
 `
