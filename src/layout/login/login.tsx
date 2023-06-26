@@ -27,7 +27,7 @@ const Login: React.FC = () => {
             <p className="text-center mt-3 ">
               У вас уже есть аккаунт?
               <a className="ms-2" role="button" onClick={toggleFormType}>
-                Sign In
+                Войти
               </a>
             </p>
           </>
@@ -37,7 +37,7 @@ const Login: React.FC = () => {
             <p className="text-center mt-3">
               У вас еще нет аккаунта?
               <a className="ms-2" role="button" onClick={toggleFormType}>
-                Sign Up
+                Регистрация
               </a>
             </p>
           </>
