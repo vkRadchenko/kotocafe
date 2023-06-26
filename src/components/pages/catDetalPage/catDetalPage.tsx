@@ -19,8 +19,8 @@ const CatDetalPage: React.FC<CatDetalProps> = ({ catId }) => {
     <>
       {currentCat ? (
         <div className="container flex-grow-1">
-          <h2>Cat Detal Page</h2>
-          <div className="row">
+          <h2 className="mt-4">Детальная страница</h2>
+          <div className="row mt-4">
             <div className="overflow-hidden col-lg-8">
               <Carousel>
                 <div>
@@ -37,7 +37,7 @@ const CatDetalPage: React.FC<CatDetalProps> = ({ catId }) => {
                 </div>
               </Carousel>
             </div>
-            <div className="col-lg-4">
+            <div className="d-flex flex-lg-column justify-content-between justify-content-lg-start col-lg-4 mb-3 mb-lg-0">
               <div>
                 <h2>{currentCat?.name}</h2>
                 <span>
