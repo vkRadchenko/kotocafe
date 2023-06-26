@@ -1,3 +1,5 @@
+import styled from 'styled-components'
+
 type inputOptions = {
   type: string
   name: string
@@ -19,7 +21,7 @@ const InputSex: React.FC<inputOptions> = ({
 }) => {
   return (
     <div className="form-check form-check-inline">
-      <input
+      <InputCustom
         className="form-check-input"
         type={type}
         name={name}
@@ -35,4 +37,11 @@ const InputSex: React.FC<inputOptions> = ({
   )
 }
 
+const InputCustom = styled.input`
+  :checked {
+    background-color: #436e6f;
+    border-color: #436e6f;
+    color: #436e6f;
+  }
+`
 export default InputSex
