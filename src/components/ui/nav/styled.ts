@@ -1,12 +1,28 @@
+import { projectColors } from 'consts/projectColors'
 import styled from 'styled-components'
 
 export const Logo = styled.img`
-  width: 70px;
-  height: 45;
+  width: 50px;
+`
+export const LogoText = styled.span`
+  font-size: 16px;
+  margin-left: 10px;
+  line-height: 20px;
 `
 export const LoginWrap = styled.span`
-  color: #0d6efd;
   :hover {
-    color: #0a58ca;
+    color: ${`${projectColors.hoverBaseColor}`};
+  }
+`
+export const NavLinkCustom = styled.ul`
+  display: flex;
+  flex: wrap;
+  justify-content: space-evenly;
+  flex-grow: 1;
+  .nav-item {
+    text-align: center;
+  }
+  .nav-item:hover {
+    color: ${`${projectColors.hoverBaseColor}`};
   }
 `
