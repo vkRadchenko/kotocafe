@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { Dispatch, createSlice } from '@reduxjs/toolkit'
 import breedService from 'services/breed.service'
 import isOutDated from 'utils/isOutDated'
 
@@ -38,7 +38,7 @@ const breedSlice = createSlice({
 const { reducer: breedReducer, actions } = breedSlice
 const { breedRequested, breedReceved, breedRequestFiled } = actions
 
-export const loadBreeds = () => async (dispatch: any, getState: any) => {
+export const loadBreeds = () => async (dispatch: Dispatch, getState: any) => {
   const { lastFetch } = getState().breed
   if (isOutDated(lastFetch)) {
     dispatch(breedRequested())
@@ -51,7 +51,7 @@ export const loadBreeds = () => async (dispatch: any, getState: any) => {
   }
 }
 
-export const getBreeds = () => (state: any) => {
+export const getBreeds = () => (state: { breed: BreedState }) => {
   return state.breed.entities ? state.breed.entities : null
 }
 export default breedReducer

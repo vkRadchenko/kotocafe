@@ -1,8 +1,10 @@
-function isOutDated(date: number) {
-  if (Date.now() - date > 10 * 60 * 1000) {
-    return true
+function isOutDated(date: number | null) {
+  if (date !== null) {
+    if (Date.now() - date > 10 * 60 * 1000) {
+      return true
+    }
+    return false
   }
-  return false
 }
 
 export default isOutDated

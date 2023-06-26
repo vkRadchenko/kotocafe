@@ -5,13 +5,14 @@ import {
   createAction,
   createSlice,
 } from '@reduxjs/toolkit'
-import axios from 'axios'
+import axios, { AxiosResponse } from 'axios'
+import { CatsInterface } from 'components/types/catsInterface'
 import { rootNavigate } from 'customRouter'
 import { nanoid } from 'nanoid'
 import catService from 'services/cat.service'
 
 interface CatsState {
-  entities: null | []
+  entities: CatsInterface[] | null
   isLoading: boolean
   error: string | null
   dataLoaded: boolean
@@ -33,7 +34,7 @@ const catsSlice = createSlice({
     catsRequested: (state) => {
       state.isLoading = true
     },
-    catsReceved: (state, action: any) => {
+    catsReceved: (state, action: PayloadAction<CatsInterface[]>) => {
       state.entities = action.payload
       state.dataLoaded = true
       state.isLoading = false
@@ -42,13 +43,13 @@ const catsSlice = createSlice({
       state.error = action.payload
       state.isLoading = false
     },
-    catCreated: (state: any, action) => {
+    catCreated: (state, action: PayloadAction<CatsInterface>) => {
       if (!Array.isArray(state.entities)) {
         state.entities = []
       }
       state.entities.push(action.payload)
     },
-    catImageCreated: (state: any, action) => {
+    catImageCreated: (state, action: PayloadAction<string>) => {
       state.cardCatImage = action.payload
     },
   },
@@ -64,31 +65,30 @@ const {
 } = actions
 
 const catCreateRequested = createAction('cats/catCreateRequested')
-const createCatFaild = createAction('cats/createCatFaild')
+const createCatFaild = createAction<string>('cats/createCatFaild')
 const createCatImageRequested = createAction('cats/createCatImageRequested')
-const createCatImgFaild = createAction('cats/createCatImgFaild')
 
-export const loadCatsList =
-  () => async (dispatch: Dispatch<AnyAction>, getState: any) => {
-    dispatch(catsRequested())
-    try {
-      const { content } = await catService.get()
-      dispatch(catsReceved(content))
-    } catch (error) {
-      dispatch(catsRequestFiled((error as Error).message))
+export const loadCatsList = () => async (dispatch: Dispatch<AnyAction>) => {
+  dispatch(catsRequested())
+  try {
+    const { content } = await catService.get()
+    dispatch(catsReceved(content))
+  } catch (error) {
+    dispatch(catsRequestFiled((error as Error).message))
+  }
+}
+export const getCats = () => (state: { cats: CatsState }) => state.cats.entities
+export const getCatById = (catId: string) => (state: { cats: CatsState }) => {
+  if (state.cats.entities) {
+    return state.cats.entities.find((c) => c._id === catId)
+  }
+}
+export const getCatByUserId =
+  (userId: string) => (state: { cats: CatsState }) => {
+    if (state.cats.entities) {
+      return state.cats.entities.filter((c) => c.userId === userId)
     }
   }
-export const getCats = () => (state: any) => state.cats.entities
-export const getCatById = (catId: string) => (state: any) => {
-  if (state.cats.entities) {
-    return state.cats.entities.find((c: any) => c._id === catId)
-  }
-}
-export const getCatByUserId = (userId: string) => (state: any) => {
-  if (state.cats.entities) {
-    return state.cats.entities.filter((c: any) => c.userId === userId)
-  }
-}
 
 export const signUpCat =
   (payload: any) => async (dispatch: Dispatch<AnyAction>) => {
@@ -108,12 +108,13 @@ export const signUpCat =
     }
   }
 
-export const getDataStatus = () => (state: any) => state.cats.dataLoaded
+export const getDataStatus = () => (state: { cats: CatsState }) =>
+  state.cats.dataLoaded
 
-export const catImageService = () => async (dispatch: any) => {
+export const catImageService = () => async (dispatch: Dispatch<AnyAction>) => {
   dispatch(createCatImageRequested())
   try {
-    const { data } = await axios.get(
+    const { data }: AxiosResponse<any> = await axios.get(
       'https://api.thecatapi.com/v1/images/search'
     )
     const [content]: any = data
@@ -122,7 +123,7 @@ export const catImageService = () => async (dispatch: any) => {
     dispatch(createCatFaild(error.message))
   }
 }
-export const getCatImage = () => (state: any) => {
+export const getCatImage = () => (state: { cats: CatsState }) => {
   return state.cats.cardCatImage ? state.cats.cardCatImage : null
 }
 

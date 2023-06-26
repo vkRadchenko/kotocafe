@@ -14,6 +14,7 @@ type CatDetalProps = {
 
 const CatDetalPage: React.FC<CatDetalProps> = ({ catId }) => {
   const currentCat = useSelector(getCatById(catId))
+  console.log(currentCat)
 
   return (
     <>

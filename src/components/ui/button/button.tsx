@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 interface I_ButtonProps {
-  //type?: 'primary' | 'secondary' | 'ghost' | 'danger'
   children?: React.ReactNode
   disabled?: boolean
   size?: string
@@ -38,7 +37,7 @@ const Button = styled(
   letter-spacing: 0.36px;
   width: ${(p) => (p.block ? '100%' : 'fit-content')};
   padding: 0
-    ${(p: any) =>
+    ${(p) =>
       p.size === 'sm'
         ? '1.1rem'
         : p.size === 'md'

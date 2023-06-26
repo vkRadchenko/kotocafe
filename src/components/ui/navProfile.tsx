@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { getUser } from 'store/user'
 
 const NavProfile = () => {
-  const currentUser: any = useSelector(getUser())
+  const currentUser = useSelector(getUser())
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
   const hundleToggleMenu = () => {

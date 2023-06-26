@@ -50,7 +50,11 @@ const { reducer: qualitiesReducer, actions } = qualitiesSlice
 const { qualitiesRequested, qualitiesReceved, qualitiesRequestFiled } = actions
 
 export const loadQualitiesList =
-  () => async (dispatch: Dispatch<AnyAction>, getState: any) => {
+  () =>
+  async (
+    dispatch: Dispatch<AnyAction>,
+    getState: () => { qualities: QualitiesState }
+  ) => {
     const { lastFetch } = getState().qualities
     if (isOutDated(lastFetch)) {
       dispatch(qualitiesRequested())

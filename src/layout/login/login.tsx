@@ -9,7 +9,7 @@ const Login: React.FC = () => {
     type === 'register' ? type : 'login'
   )
 
-  const toggleFormType = (params: any) => {
+  const handleToggleFormType = () => {
     setFormType((prevState) =>
       prevState === 'register' ? 'login' : 'register'
     )
@@ -26,7 +26,7 @@ const Login: React.FC = () => {
             <RegisterForm />
             <p className="text-center mt-3 ">
               У вас уже есть аккаунт?
-              <a className="ms-2" role="button" onClick={toggleFormType}>
+              <a className="ms-2" role="button" onClick={handleToggleFormType}>
                 Войти
               </a>
             </p>
@@ -36,7 +36,7 @@ const Login: React.FC = () => {
             <LoginForm />
             <p className="text-center mt-3">
               У вас еще нет аккаунта?
-              <a className="ms-2" role="button" onClick={toggleFormType}>
+              <a className="ms-2" role="button" onClick={handleToggleFormType}>
                 Регистрация
               </a>
             </p>

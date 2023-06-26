@@ -5,11 +5,12 @@ export interface CatsInterface {
   name: string
   breed: string
   sex: string
-  year: string
+  age: string
   create_at: number
   health: string
   temper: string
   qualities?: Array<string>
   history: string
   image: string
+  userId: string
 }
