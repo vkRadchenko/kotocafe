@@ -2,11 +2,11 @@ import React from 'react'
 import Select from 'react-select'
 
 interface MultiProps {
-  options: any
+  options: { label: string; value: string }[] | undefined
   onChange: (props: any) => void
   name: string
   label: string
-  defaultValue: any
+  defaultValue: { label: string; value: string } | [] | null
   isMulti?: boolean
   closeMenuOnSelect?: boolean
 }
@@ -20,11 +20,6 @@ const MultiSelectField: React.FC<MultiProps> = ({
   isMulti = true,
   closeMenuOnSelect = false,
 }) => {
-  const optionsArray =
-    !Array.isArray(options) && typeof options === 'object'
-      ? Object.values(options)
-      : options
-
   const handleChange = (value: any) => {
     onChange({ name: name, value })
   }
@@ -35,7 +30,7 @@ const MultiSelectField: React.FC<MultiProps> = ({
         isMulti={isMulti}
         closeMenuOnSelect={closeMenuOnSelect}
         defaultValue={defaultValue}
-        options={optionsArray}
+        options={options}
         className="basic-multi-select"
         classNamePrefix="select"
         onChange={handleChange}

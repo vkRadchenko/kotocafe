@@ -4,7 +4,7 @@ import { CardImage, CardWrapper, Like } from './styled'
 interface CardCat {
   name: string
   history: string
-  periodInShelter: any
+  periodInShelter: string
   sex: string
   id: string
   image: string
@@ -25,9 +25,10 @@ const CardCat: React.FC<CardCat> = ({
   const handleHeartClick = () => {
     setFavorits((prevState) => !prevState)
   }
-  const handleCardClick = (params: any) => {
+  const handleCardClick = () => {
     navigate(`/cats/${id}`)
   }
+  console.log(periodInShelter)
 
   return (
     <>

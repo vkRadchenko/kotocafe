@@ -1,12 +1,16 @@
+import { CatBreed } from 'components/types/catBreed'
 import { projectColors } from 'consts/projectColors'
 import { useSelector } from 'react-redux'
 import { getBreeds } from 'store/breed'
 
-type breedFilter = {
+type BreedFilterProps = {
   onBreedChange: (params: string) => void
   clearFilter: string
 }
-const BreedFilter: React.FC<breedFilter> = ({ onBreedChange, clearFilter }) => {
+const BreedFilter: React.FC<BreedFilterProps> = ({
+  onBreedChange,
+  clearFilter,
+}) => {
   const breed = useSelector(getBreeds())
 
   const handleBreedValue = (params: string) => {
@@ -24,7 +28,7 @@ const BreedFilter: React.FC<breedFilter> = ({ onBreedChange, clearFilter }) => {
         value={clearFilter}
       >
         <option value={''}>Любая порода</option>
-        {breed?.map((breed: any) => (
+        {breed?.map((breed: CatBreed) => (
           <option key={breed._id} value={breed.key}>
             {breed.name}
           </option>
