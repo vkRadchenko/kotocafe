@@ -37,7 +37,9 @@ const Filter: React.FC<catsFilter> = ({ onCatSelect }) => {
         onBreedChange={handleBreedStatus}
         clearFilter={allFilteredData.breed}
       />
-      <Button onClick={handleButtonReset}>Сбросить</Button>
+      <Button type="button" size="sm" onClick={handleButtonReset}>
+        Сбросить
+      </Button>
     </>
   )
 }

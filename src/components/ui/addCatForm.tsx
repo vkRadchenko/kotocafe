@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getCatImage, signUpCat } from 'store/cats'
 import { getCurrentUserId } from 'store/user'
 import { getBreeds } from 'store/breed'
+import Button from './button/button'
 
 export interface Data {
   name: string
@@ -132,10 +133,9 @@ const AddCatForm: React.FC = () => {
         value={data.history}
         onChange={handleChange}
       />
-
-      <button className="btn btn-primary w-100 mx-auto" type="submit">
+      <Button size="md" type="submit" block>
         Разместить объявление
-      </button>
+      </Button>
     </form>
   )
 }
