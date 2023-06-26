@@ -14,7 +14,9 @@ const NavProfile = () => {
   return (
     <div className="dropdown" onClick={hundleToggleMenu}>
       <div className="dropdown btn dropdown-toggle d-flex align-items-center">
-        <div className="me-2">{currentUser.name}</div>
+        <div className="me-2">
+          <p>{currentUser.name}</p>
+        </div>
         <img
           src={currentUser.image}
           alt="avatar"
