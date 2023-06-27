@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import CardCat from 'components/common/cardCat/cardCat'
-import Pagination from 'components/common/pagination'
+import Pagination from 'components/common/pagination/pagination'
 import { paginate } from 'utils/paginate'
 import Filter from 'components/blocks/filter/filter'
 import { CatsInterface } from 'components/types/catsInterface'
@@ -20,6 +20,9 @@ const CatsListPage: React.FC = () => {
   })
 
   const pageSize = 6
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [filteredCatData])
 
   const handlePageChange = (pageIndex: number) => {
     setCurrentPage(pageIndex)
