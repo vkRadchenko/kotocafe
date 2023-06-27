@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import CardCat from 'components/common/cardCat/cardCat'
-import Pagination from 'components/common/pagination'
+import Pagination from 'components/common/pagination/pagination'
 import { paginate } from 'utils/paginate'
 import Filter from 'components/blocks/filter/filter'
 import { CatsInterface } from 'components/types/catsInterface'
 import { displayDate } from 'utils/displayDate'
 import { useSelector } from 'react-redux'
 import { getCats } from 'store/cats'
+import SpinnerLoader from 'components/ui/spinnerLoader'
 
 const CatsListPage: React.FC = () => {
   const cats = useSelector(getCats())
@@ -19,6 +20,9 @@ const CatsListPage: React.FC = () => {
   })
 
   const pageSize = 6
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [filteredCatData])
 
   const handlePageChange = (pageIndex: number) => {
     setCurrentPage(pageIndex)
@@ -63,19 +67,23 @@ const CatsListPage: React.FC = () => {
               <Filter onCatSelect={handleFilterSelect} />
             </div>
             <div className="col-lg-9">
-              <div className="row">
-                {cropCatsList?.map((cat: CatsInterface) => (
-                  <CardCat
-                    name={cat.name}
-                    history={cat.history}
-                    periodInShelter={displayDate(cat.create_at)}
-                    sex={cat.sex}
-                    key={cat._id}
-                    id={cat._id}
-                    image={cat.image}
-                  />
-                ))}
-              </div>
+              {count !== 0 ? (
+                <div className="row">
+                  {cropCatsList?.map((cat: CatsInterface) => (
+                    <CardCat
+                      name={cat.name}
+                      history={cat.history}
+                      periodInShelter={displayDate(cat.create_at)}
+                      sex={cat.sex}
+                      key={cat._id}
+                      id={cat._id}
+                      image={cat.image}
+                    />
+                  ))}
+                </div>
+              ) : (
+                'Нет ни одного объявления'
+              )}
             </div>
           </div>
           {cats && (
@@ -90,7 +98,7 @@ const CatsListPage: React.FC = () => {
       </>
     )
   }
-  return <h2>'Loading'</h2>
+  return <SpinnerLoader />
 }
 
 export default CatsListPage

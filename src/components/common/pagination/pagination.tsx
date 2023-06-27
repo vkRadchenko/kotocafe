@@ -1,3 +1,5 @@
+import { PaginateButton } from './styled'
+
 type paginate = {
   currentPage: number
   itemsCount: number
@@ -19,7 +21,7 @@ const Pagination: React.FC<paginate> = ({
 
   return (
     <>
-      <ul className="pagination mt-4 justify-content-center">
+      <PaginateButton className="pagination mt-4 justify-content-center">
         {arrNum.map((page) => (
           <li
             key={'page_' + page}
@@ -30,7 +32,7 @@ const Pagination: React.FC<paginate> = ({
             </button>
           </li>
         ))}
-      </ul>
+      </PaginateButton>
     </>
   )
 }

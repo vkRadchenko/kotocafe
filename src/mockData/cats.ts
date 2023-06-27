@@ -34,13 +34,13 @@ const qualities: Qualities = {
   },
 }
 
-const cats: CatsInterface[] = [
+const cats: any = [
   {
     _id: '67rdca3eeb7f6fgeed471815',
     name: 'Пуша',
     breed: 'Дворовая',
     sex: 'Кошка',
-    year: '1',
+    age: '1',
     create_at: 1,
     health: 'good',
     temper: 'Добрая',
@@ -54,7 +54,7 @@ const cats: CatsInterface[] = [
     name: 'Пуша',
     breed: 'Дворовая',
     sex: 'Кошка',
-    year: '1',
+    age: '1',
     create_at: 1,
     health: 'good',
     temper: 'Ласковая',
@@ -68,7 +68,7 @@ const cats: CatsInterface[] = [
     name: 'Пуша',
     breed: 'Сфинкс',
     sex: 'Кот',
-    year: '3',
+    age: '3',
     create_at: 1,
     health: 'good',
     temper: 'Любит детей',
@@ -82,7 +82,7 @@ const cats: CatsInterface[] = [
     name: 'Пуша',
     breed: 'Сфинкс',
     sex: 'Кот',
-    year: '4',
+    age: '4',
     create_at: 1,
     health: 'good',
     temper: 'Добрая',
@@ -96,7 +96,7 @@ const cats: CatsInterface[] = [
     name: 'Пуша',
     breed: 'Дворовая',
     sex: 'Кот',
-    year: '6',
+    age: '6',
     create_at: 1,
     health: 'good',
     temper: 'Добрая',
@@ -110,7 +110,7 @@ const cats: CatsInterface[] = [
     name: 'Пуша',
     breed: 'Сфинкс',
     sex: 'Кошка',
-    year: '8',
+    age: '8',
     create_at: 1,
     health: 'good',
     temper: 'Ласковая',
@@ -124,7 +124,7 @@ const cats: CatsInterface[] = [
     name: 'Пуша',
     breed: 'Дворовая',
     sex: 'Кошка',
-    year: '1',
+    age: '1',
     create_at: 1,
     health: 'good',
     temper: 'Ласковая',
@@ -138,7 +138,7 @@ const cats: CatsInterface[] = [
     name: 'Пуша',
     breed: 'Сфинкс',
     sex: 'Кот',
-    year: '5',
+    age: '5',
     create_at: 1,
     health: 'good',
     temper: 'Ласковая',
@@ -152,7 +152,7 @@ const cats: CatsInterface[] = [
     name: 'Пуша',
     breed: 'Дворовая',
     sex: 'Кот',
-    year: '6',
+    age: '6',
     create_at: 1,
     health: 'good',
     temper: 'Добрая',
@@ -166,7 +166,7 @@ const cats: CatsInterface[] = [
     name: 'Пуша',
     breed: 'Сфинкс',
     sex: 'Кошка',
-    year: '3',
+    age: '3',
     create_at: 1,
     health: 'good',
     temper: 'Ласковая',
@@ -180,7 +180,7 @@ const cats: CatsInterface[] = [
     name: 'Пуша',
     breed: 'Сфинкс',
     sex: 'Кошка',
-    year: '4',
+    age: '4',
     create_at: 1,
     health: 'good',
     temper: 'Ласковая',
@@ -201,7 +201,7 @@ const fetchAll = () =>
 const getById = (id: string) =>
   new Promise<any>((resolve) => {
     window.setTimeout(function () {
-      resolve(cats.find((cat) => cat._id === id))
+      resolve(cats.find((cat: any) => cat._id === id))
     })
   })
 export default { fetchAll, getById }

@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { CardImage, CardWrapper, Like } from './styled'
+import { CardImage, CardWrapper, TextWrap } from './styled'
 interface CardCat {
   name: string
   history: string
-  periodInShelter: any
+  periodInShelter: string
   sex: string
   id: string
   image: string
@@ -25,7 +25,7 @@ const CardCat: React.FC<CardCat> = ({
   const handleHeartClick = () => {
     setFavorits((prevState) => !prevState)
   }
-  const handleCardClick = (params: any) => {
+  const handleCardClick = () => {
     navigate(`/cats/${id}`)
   }
 
@@ -37,12 +37,6 @@ const CardCat: React.FC<CardCat> = ({
           onClick={handleCardClick}
         >
           <CardImage src={image} className="card-img-top" alt="..." />
-          <Like
-            onClick={handleHeartClick}
-            className={`bi ${
-              !favorits ? 'bi-heart' : 'bi-heart-fill text-danger'
-            } fs-3 pe-2`}
-          />
           <div
             className="card-body overflow-y-hidden"
             style={{ height: '200px' }}
@@ -51,8 +45,9 @@ const CardCat: React.FC<CardCat> = ({
               <h5 className="">{name}</h5>
               <span className="d-block text-secondary">{sex}</span>
             </div>
-
-            <p className="card-text ">{history}</p>
+            <TextWrap>
+              <p className="card-text ">{history}</p>
+            </TextWrap>
           </div>
           <div className="card-footer bg-white">
             <small className="text-body-secondary">{periodInShelter}</small>

@@ -10,7 +10,7 @@ import {
 import Quality from './quality'
 
 interface QualList {
-  qualities: [string]
+  qualities: string[]
 }
 
 const QualitiesList: React.FC<QualList> = ({ qualities }) => {

@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { validator } from 'utils/validator'
 import TextField from 'components/common/form/textField'
 import { useDispatch } from 'react-redux'
 import { signUp } from 'store/user'
+import Button from './button/button'
 
 const RegisterForm: React.FC = () => {
   const dispatch: any = useDispatch()
@@ -17,16 +18,16 @@ const RegisterForm: React.FC = () => {
     email: '',
     password: '',
   })
-  //const [enterError, setEnterError] = useState(null)
 
-  const handleChange = (target: { name: string; value: string | boolean }) => {
-    setData((prevState) => ({
-      ...prevState,
-      [target.name]: target.value,
-    }))
-
-    //setEnterError(null)
-  }
+  const handleChange = useCallback(
+    (target: { name: string; value: string | boolean }) => {
+      setData((prevState) => ({
+        ...prevState,
+        [target.name]: target.value,
+      }))
+    },
+    []
+  )
 
   const validatorConfig = {
     name: {
@@ -101,13 +102,9 @@ const RegisterForm: React.FC = () => {
         onChange={handleChange}
         error={errors.password}
       />
-      <button
-        className="btn btn-primary w-100 mx-auto"
-        type="submit"
-        disabled={!isValid}
-      >
+      <Button type="submit" block size="md" disabled={!isValid}>
         Зарегестрироваться
-      </button>
+      </Button>
     </form>
   )
 }

@@ -1,3 +1,4 @@
+import styled from 'styled-components'
 import transformStringAge from 'utils/transformStringAge'
 
 interface RangeFieldProps {
@@ -23,7 +24,7 @@ const RangeField: React.FC<RangeFieldProps> = ({
       </label>
       <div className="d-flex flex-nowrap ">
         <div className="flex-grow-1">
-          <input
+          <InputRange
             name={name}
             type="range"
             className="form-range"
@@ -42,4 +43,12 @@ const RangeField: React.FC<RangeFieldProps> = ({
   )
 }
 
+const InputRange = styled.input`
+  ::-webkit-slider-thumb {
+    background-color: #436e6f;
+    :checked {
+      background-color: #436e6f;
+    }
+  }
+`
 export default RangeField

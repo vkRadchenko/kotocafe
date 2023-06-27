@@ -1,4 +1,11 @@
-import { createAction, createSlice } from '@reduxjs/toolkit'
+import {
+  AnyAction,
+  Dispatch,
+  PayloadAction,
+  createAction,
+  createSlice,
+} from '@reduxjs/toolkit'
+import { User } from 'components/types/User'
 import { rootNavigate } from 'customRouter'
 import authService from 'services/auth.service'
 import localStorageService from 'services/localStorage.service'
@@ -6,7 +13,7 @@ import userService from 'services/user.service'
 import generetAuthError from 'utils/generateAuthError'
 
 interface UserState {
-  entities: null | []
+  entities: User | null
   isLoading: boolean
   error: string | null
   auth: any
@@ -39,22 +46,22 @@ const userSlice = createSlice({
     userRequested: (state) => {
       state.isLoading = true
     },
-    userReceved: (state, action: any) => {
+    userReceved: (state, action: PayloadAction<User>) => {
       state.entities = action.payload
       state.isLoading = false
     },
-    userRequestFiled: (state, action) => {
+    userRequestFiled: (state, action: PayloadAction<string>) => {
       state.error = action.payload
       state.isLoading = false
     },
-    authRequesteSuccess: (state, action) => {
+    authRequesteSuccess: (state, action: PayloadAction<{ userId: string }>) => {
       state.auth = action.payload
       state.isLoggedIn = true
     },
-    authRequestFailed: (state, action) => {
+    authRequestFailed: (state, action: PayloadAction<string>) => {
       state.error = action.payload
     },
-    userCreated: (state, action) => {
+    userCreated: (state, action: PayloadAction<User>) => {
       state.entities = action.payload
     },
     userLogOut: (state) => {
@@ -83,26 +90,27 @@ const authRequested = createAction('user/authRequested')
 const userCreateRequested = createAction('user/userCreateRequested')
 const createUserFailed = createAction('user/createUserFailed')
 
-export const logIn = (payload: any) => async (dispatch: any) => {
-  const { email, password } = payload
-  dispatch(authRequested())
-  try {
-    const data = await authService.logIn({ email, password })
-    dispatch(authRequesteSuccess({ userId: data.localId }))
-    localStorageService.setTokens(data)
-    rootNavigate('/cats')
-  } catch (error: any) {
-    const { code, message } = error.response.data.error
-    if (code === 400) {
-      const errorMessage = generetAuthError(message)
-      dispatch(authRequestFailed(errorMessage))
-    } else {
-      dispatch(authRequestFailed(error.message))
+export const logIn =
+  (payload: { email: string; password: string }) => async (dispatch: any) => {
+    const { email, password } = payload
+    dispatch(authRequested())
+    try {
+      const data = await authService.logIn({ email, password })
+      dispatch(authRequesteSuccess({ userId: data.localId }))
+      localStorageService.setTokens(data)
+      rootNavigate('/cats')
+    } catch (error: any) {
+      const { code, message } = error.response.data.error
+      if (code === 400) {
+        const errorMessage = generetAuthError(message)
+        dispatch(authRequestFailed(errorMessage))
+      } else {
+        dispatch(authRequestFailed(error.message))
+      }
     }
   }
-}
 
-export const logOut = () => (dispatch: any) => {
+export const logOut = () => (dispatch: Dispatch<AnyAction>) => {
   localStorageService.removeAuthData()
   dispatch(userLogOut())
   rootNavigate('/cats')
@@ -143,7 +151,7 @@ export const signUp =
       }
     }
   }
-export const getUserData = () => async (dispatch: any) => {
+export const getUserData = () => async (dispatch: Dispatch<AnyAction>) => {
   dispatch(userRequested())
   try {
     const { content } = await userService.getCurrentUser()
@@ -152,10 +160,13 @@ export const getUserData = () => async (dispatch: any) => {
     dispatch(userRequestFiled(error.message))
   }
 }
-export const getUser = () => (state: any) => {
+export const getUser = () => (state: { user: UserState }) => {
   return state.user.entities ? state.user.entities : null
 }
-export const getIsLoggedIn = () => (state: any) => state.user.isLoggedIn
-export const getCurrentUserId = () => (state: any) => state.user.auth.userId
-export const getAuthErrors = () => (state: any) => state.user.error
+export const getIsLoggedIn = () => (state: { user: UserState }) =>
+  state.user.isLoggedIn
+export const getCurrentUserId = () => (state: { user: UserState }) =>
+  state.user.auth.userId
+export const getAuthErrors = () => (state: { user: UserState }) =>
+  state.user.error
 export default userReducer

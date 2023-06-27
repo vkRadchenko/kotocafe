@@ -1,3 +1,6 @@
+import { InputCustom } from 'app.styled'
+import styled from 'styled-components'
+
 type inputOptions = {
   type: string
   name: string
@@ -19,7 +22,7 @@ const InputSex: React.FC<inputOptions> = ({
 }) => {
   return (
     <div className="form-check form-check-inline">
-      <input
+      <InputCustom
         className="form-check-input"
         type={type}
         name={name}

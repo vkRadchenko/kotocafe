@@ -1,6 +1,8 @@
 import styled, { createGlobalStyle } from 'styled-components'
-
+import { projectColors } from 'consts/projectColors'
 export const AppStyles = createGlobalStyle`
+
+
 body{
   -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -9,8 +11,9 @@ body{
     font-size: 14px;
     font-style: normal;
     font-weight: normal;
-    color: #5e5873;
+    color: ${`${projectColors.baseColor}`};
     min-width: 320px;
+    
 }
 
 *,
@@ -21,6 +24,7 @@ body{
   a {
     color: inherit;
     text-decoration: inherit;
+    color: inherit ;
   }
   ul, li {
     list-style: none;
@@ -58,6 +62,16 @@ body{
   }
   p, li {
     line-height: 21px;
+    color: inherit;  
+  }
+  span{
+    color: ${`${projectColors.baseColor}`};
+  }
+  .dropdown-item {
+    color:inherit;
+  }
+  .dropdown-item:hover{
+    color: ${`${projectColors.hoverBaseColor}`};
   }
 `
 
@@ -65,4 +79,13 @@ export const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+`
+
+export const InputCustom = styled.input`
+  :checked {
+    background-color: #436e6f;
+    border-color: #436e6f;
+    color: #436e6f;
+    box-shadow: 0px 0px 5px 2px #436e6f;
+  }
 `

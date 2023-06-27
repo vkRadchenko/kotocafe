@@ -6,9 +6,9 @@ import { getCurrentUserId, getUser } from 'store/user'
 import { displayDate } from 'utils/displayDate'
 
 const UserDetalPage = () => {
-  const currentUser: any = useSelector(getUser())
-  const currentUserId: any = useSelector(getCurrentUserId())
-  const catsList: any = useSelector(getCatByUserId(currentUserId))
+  const currentUser = useSelector(getUser())
+  const currentUserId = useSelector(getCurrentUserId())
+  const catsList = useSelector(getCatByUserId(currentUserId))
 
   return (
     <>

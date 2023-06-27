@@ -3,6 +3,7 @@ import { validator } from 'utils/validator'
 import TextField from 'components/common/form/textField'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAuthErrors, logIn } from 'store/user'
+import Button from './button/button'
 
 const LoginForm: React.FC = () => {
   const [data, setData] = useState({
@@ -78,13 +79,10 @@ const LoginForm: React.FC = () => {
       {loginError && (
         <p className="text-danger mb-1 text-center">{loginError}</p>
       )}
-      <button
-        className="btn btn-primary w-100 mx-auto"
-        type="submit"
-        disabled={!isValid}
-      >
-        Submit
-      </button>
+
+      <Button type="submit" block size="md" disabled={!isValid}>
+        Войти
+      </Button>
     </form>
   )
 }

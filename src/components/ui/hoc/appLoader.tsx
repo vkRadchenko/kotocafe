@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import React, { FC, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { loadBreeds } from 'store/breed'
@@ -6,9 +6,14 @@ import { catImageService, loadCatsList } from 'store/cats'
 import { loadQualitiesList } from 'store/qualities'
 import { getIsLoggedIn, getUserData } from 'store/user'
 
-const AppLoader = ({ children }: any) => {
+interface AppLoaderProps {
+  children: React.ReactNode
+}
+
+const AppLoader: FC<AppLoaderProps> = ({ children }) => {
   const dispatch: any = useDispatch()
   const isLoggedIn = useSelector(getIsLoggedIn())
+
   useEffect(() => {
     dispatch(loadQualitiesList())
     dispatch(loadCatsList())
@@ -17,8 +22,9 @@ const AppLoader = ({ children }: any) => {
       dispatch(getUserData())
       dispatch(catImageService())
     }
-  }, [isLoggedIn])
-  return children
+  }, [dispatch, isLoggedIn])
+
+  return <>{children}</>
 }
 
 export default AppLoader
