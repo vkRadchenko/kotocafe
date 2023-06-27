@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { InputCustom } from 'app.styled'
 
 interface Radio {
   options: { [key: string]: string }[]
@@ -28,7 +29,7 @@ const RadioField: React.FC<Radio> = ({
             key={option.name + '_' + option.value}
             className="form-check form-check-inline"
           >
-            <input
+            <InputCustom
               className="form-check-input"
               type="radio"
               name={name}

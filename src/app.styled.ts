@@ -80,3 +80,12 @@ export const PageWrapper = styled.div`
   flex-direction: column;
   min-height: 100vh;
 `
+
+export const InputCustom = styled.input`
+  :checked {
+    background-color: #436e6f;
+    border-color: #436e6f;
+    color: #436e6f;
+    box-shadow: 0px 0px 5px 2px #436e6f;
+  }
+`

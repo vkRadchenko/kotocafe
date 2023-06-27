@@ -1,3 +1,4 @@
+import { InputCustom } from 'app.styled'
 import styled from 'styled-components'
 
 type inputOptions = {
@@ -37,11 +38,4 @@ const InputSex: React.FC<inputOptions> = ({
   )
 }
 
-const InputCustom = styled.input`
-  :checked {
-    background-color: #436e6f;
-    border-color: #436e6f;
-    color: #436e6f;
-  }
-`
 export default InputSex

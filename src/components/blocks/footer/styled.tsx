@@ -5,6 +5,5 @@ export const FooterWrapper = styled.footer`
   display: flex;
   justify-content: space-between;
   background-color: #f8f9fa;
-  color: #202020;
   height: 40px;
 `

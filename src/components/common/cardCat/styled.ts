@@ -24,3 +24,19 @@ export const Like = styled.i`
     color: #e63030;
   }
 `
+export const TextWrap = styled.div`
+  overflow: hidden;
+  position: relative;
+  height: 140px;
+
+  ::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 5.2em;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), white 100%);
+    pointer-events: none;
+  }
+`
