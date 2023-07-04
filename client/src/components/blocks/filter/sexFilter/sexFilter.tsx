@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import InputSex from './inputSex'
 
 type sexFilter = {

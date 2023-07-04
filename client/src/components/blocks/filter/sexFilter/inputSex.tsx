@@ -1,5 +1,4 @@
 import { InputCustom } from 'app.styled'
-import styled from 'styled-components'
 
 type inputOptions = {
   type: string
