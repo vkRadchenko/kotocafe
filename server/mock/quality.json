@@ -1,0 +1,12 @@
+[
+  { "_id": "67rdca3eeb7f6fgeed471198", "name": "Игривая", "color": "primary" },
+  {
+    "_id": "67rdca3eeb7f6fgeed471100",
+    "name": "Странная",
+    "color": "secondary"
+  },
+  { "_id": "67rdca3eeb7f6fgeed4711012", "name": "Ленивая", "color": "info" },
+  { "_id": "67rdca3eeb7f6fgeed471101", "name": "Обжора", "color": "warning" },
+  { "_id": "67rdca3eeb7f6fgeed471102", "name": "Кусака", "color": "danger" },
+  { "_id": "67rdca3eeb7f6fgeed471103", "name": "Неуверенная", "color": "light" }
+]
