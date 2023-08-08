@@ -3,7 +3,6 @@ const bcrypt = require('bcryptjs')
 const { check, validationResult } = require('express-validator')
 const User = require('../models/User')
 const tokenService = require('../services/token.service')
-const Token = require('../models/Token')
 const router = express.Router({ mergeParams: true })
 
 // api/auth/
@@ -41,7 +40,7 @@ router.post('/signUp', [
 
       const hashedPassword = await bcrypt.hash(password, 12)
 
-      const newUser = User.create({
+      const newUser = await User.create({
         image: `https://api.dicebear.com/api/avataaars/${(Math.random() + 1)
           .toString(36)
           .substring(7)}.svg`,
