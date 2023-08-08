@@ -6,7 +6,7 @@ import RangeField from 'components/common/form/rangeField'
 import MultiSelectField from 'components/common/form/multiSelectField'
 import { getQualities } from 'store/qualities'
 import { useSelector, useDispatch } from 'react-redux'
-import { getCatImage, signUpCat } from 'store/cats'
+import { getCatImage, removeCatImage, signUpCat } from 'store/cats'
 import { getCurrentUserId } from 'store/user'
 import { getBreeds } from 'store/breed'
 import Button from './button/button'
@@ -73,6 +73,7 @@ const AddCatForm: React.FC = () => {
     }
 
     dispatch(signUpCat(newData))
+    dispatch(removeCatImage())
   }
 
   return (
