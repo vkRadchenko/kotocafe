@@ -8,7 +8,6 @@ import {
 import axios, { AxiosResponse } from 'axios'
 import { CatsInterface } from 'components/types/catsInterface'
 import { rootNavigate } from 'customRouter'
-import { nanoid } from 'nanoid'
 import catService from 'services/cat.service'
 
 interface CatsState {
@@ -52,6 +51,9 @@ const catsSlice = createSlice({
     catImageCreated: (state, action: PayloadAction<string>) => {
       state.cardCatImage = action.payload
     },
+    catImageRemoved: (state) => {
+      state.cardCatImage = null
+    },
   },
 })
 
@@ -62,6 +64,7 @@ const {
   catsRequestFiled,
   catCreated,
   catImageCreated,
+  catImageRemoved,
 } = actions
 
 const catCreateRequested = createAction('cats/catCreateRequested')
@@ -92,15 +95,9 @@ export const getCatByUserId =
 
 export const signUpCat =
   (payload: any) => async (dispatch: Dispatch<AnyAction>) => {
-    const catData = {
-      ...payload,
-      _id: nanoid(),
-      create_at: Date.now(),
-    }
-
     dispatch(catCreateRequested())
     try {
-      const { content } = await catService.createCat(catData)
+      const { content } = await catService.createCat(payload)
       dispatch(catCreated(content))
       rootNavigate('/cats')
     } catch (error: any) {
@@ -118,13 +115,19 @@ export const catImageService = () => async (dispatch: Dispatch<AnyAction>) => {
       'https://api.thecatapi.com/v1/images/search'
     )
     const [content]: any = data
+
     dispatch(catImageCreated(content.url))
   } catch (error: any) {
     dispatch(createCatFaild(error.message))
   }
 }
+
 export const getCatImage = () => (state: { cats: CatsState }) => {
   return state.cats.cardCatImage ? state.cats.cardCatImage : null
+}
+
+export const removeCatImage = () => (dispatch: Dispatch<AnyAction>) => {
+  dispatch(catImageRemoved())
 }
 
 export default catsReducer
