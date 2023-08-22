@@ -1,8 +1,7 @@
 import React from 'react'
 import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
 import { Carousel } from 'react-responsive-carousel'
-import ifd from '../../../img/IMG_9983.jpg'
-import { BlockAboutCat } from './styled'
+import { BlockAboutCat, ImageWrapper } from './styled'
 import QualitiesList from 'components/ui/qualities/qualitiesList'
 import { useSelector } from 'react-redux'
 import { getCatById } from 'store/cats'
@@ -21,20 +20,16 @@ const CatDetalPage: React.FC<CatDetalProps> = ({ catId }) => {
         <div className="container flex-grow-1">
           <h2 className="mt-4">Детальная страница</h2>
           <div className="row mt-4">
-            <div className="overflow-hidden col-lg-8">
+            <div className="overflow-hidden col-lg-8 ">
               <Carousel>
-                <div>
-                  <img src={ifd} alt="" />
-                  <p className="legend">Legend 1</p>
-                </div>
-                <div>
-                  <img src={ifd} alt="" />
-                  <p className="legend">Legend 2</p>
-                </div>
-                <div>
-                  <img src={ifd} alt="" />
-                  <p className="legend">Legend 3</p>
-                </div>
+                <ImageWrapper>
+                  <img
+                    className="object-fit-cover w-100 h-100"
+                    src={currentCat?.image}
+                    alt=""
+                  />
+                </ImageWrapper>
+                <ImageWrapper></ImageWrapper>
               </Carousel>
             </div>
             <div className="d-flex flex-lg-column justify-content-between justify-content-lg-start col-lg-4 mb-3 mb-lg-0">
