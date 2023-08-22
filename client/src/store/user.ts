@@ -93,8 +93,8 @@ export const logIn =
     dispatch(authRequested())
     try {
       const data = await authService.logIn({ email, password })
-      dispatch(authRequesteSuccess({ userId: data.localId }))
       localStorageService.setTokens(data)
+      dispatch(authRequesteSuccess({ userId: data.userId }))
       rootNavigate('/cats')
     } catch (error: any) {
       const { code, message } = error.response.data.error
@@ -128,7 +128,6 @@ export const getUserData = () => async (dispatch: Dispatch<AnyAction>) => {
   dispatch(userRequested())
   try {
     const { content } = await userService.getCurrentUser()
-    console.log(content)
 
     dispatch(userReceved(content))
   } catch (error: any) {
@@ -136,7 +135,7 @@ export const getUserData = () => async (dispatch: Dispatch<AnyAction>) => {
   }
 }
 export const getUser = () => (state: { user: UserState }) => {
-  return state.user.entities ? state.user.entities : null
+  return state.user.entities
 }
 export const getIsLoggedIn = () => (state: { user: UserState }) =>
   state.user.isLoggedIn
