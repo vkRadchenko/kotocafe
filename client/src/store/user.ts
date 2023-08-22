@@ -82,13 +82,10 @@ const {
   userRequestFiled,
   authRequesteSuccess,
   authRequestFailed,
-  userCreated,
   userLogOut,
 } = actions
 
 const authRequested = createAction('user/authRequested')
-const userCreateRequested = createAction('user/userCreateRequested')
-const createUserFailed = createAction('user/createUserFailed')
 
 export const logIn =
   (payload: { email: string; password: string }) => async (dispatch: any) => {
@@ -96,8 +93,8 @@ export const logIn =
     dispatch(authRequested())
     try {
       const data = await authService.logIn({ email, password })
-      dispatch(authRequesteSuccess({ userId: data.localId }))
       localStorageService.setTokens(data)
+      dispatch(authRequesteSuccess({ userId: data.userId }))
       rootNavigate('/cats')
     } catch (error: any) {
       const { code, message } = error.response.data.error
@@ -116,52 +113,29 @@ export const logOut = () => (dispatch: Dispatch<AnyAction>) => {
   rootNavigate('/cats')
 }
 
-export const signUp =
-  ({ email, password, ...rest }: { [key: string]: string }) =>
-  async (dispatch: any) => {
-    dispatch(authRequested())
-    try {
-      const data: any = await authService.register({ email, password })
-      localStorageService.setTokens(data)
-      dispatch(authRequesteSuccess({ userId: data.localId }))
-      dispatch(
-        createUser({
-          _id: data.localId,
-          email,
-          image: `https://api.dicebear.com/api/avataaars/${(Math.random() + 1)
-            .toString(36)
-            .substring(7)}.svg`,
-          ...rest,
-        })
-      )
-    } catch (error) {
-      dispatch(authRequestFailed((error as Error).message))
-    }
-
-    function createUser(payload: any) {
-      return async function (dispatch: any) {
-        dispatch(userCreateRequested())
-        try {
-          const { content }: any = await userService.create(payload)
-          dispatch(userCreated(content))
-          rootNavigate('/cats')
-        } catch (error: any) {
-          dispatch(createUserFailed(error.message))
-        }
-      }
-    }
+export const signUp = (payload: any) => async (dispatch: any) => {
+  dispatch(authRequested())
+  try {
+    const data: any = await authService.register(payload)
+    localStorageService.setTokens(data)
+    dispatch(authRequesteSuccess({ userId: data.userId }))
+    rootNavigate('/cats')
+  } catch (error) {
+    dispatch(authRequestFailed((error as Error).message))
   }
+}
 export const getUserData = () => async (dispatch: Dispatch<AnyAction>) => {
   dispatch(userRequested())
   try {
     const { content } = await userService.getCurrentUser()
+
     dispatch(userReceved(content))
   } catch (error: any) {
     dispatch(userRequestFiled(error.message))
   }
 }
 export const getUser = () => (state: { user: UserState }) => {
-  return state.user.entities ? state.user.entities : null
+  return state.user.entities
 }
 export const getIsLoggedIn = () => (state: { user: UserState }) =>
   state.user.isLoggedIn

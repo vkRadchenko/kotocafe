@@ -23,7 +23,7 @@ function App(): JSX.Element {
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/cats/:catId?/:edit?" element={<Cats />} />
-            <Route path="/users/:userId?/:edit?" element={<UserDetalPage />} />
+            <Route path="/user/:userId?/:edit?" element={<UserDetalPage />} />
             <Route path="/additem" element={<CreateCat />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/login/:type?" element={<Login />} />

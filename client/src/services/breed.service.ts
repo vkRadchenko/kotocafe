@@ -1,6 +1,6 @@
 import httpService from './http.servise'
 
-const breedEndPoint = 'breed/'
+const breedEndPoint = 'breeds/'
 
 const breedService = {
   fetchAll: async () => {

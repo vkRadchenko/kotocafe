@@ -1,7 +1,7 @@
 import logoImg from './../../../img/catLogo.svg'
 import { LoginWrap, Logo, LogoText, NavLinkCustom } from './styled'
 import { Link } from 'react-router-dom'
-import NavProfile from '../navProfile'
+import NavProfile from '../navProfile/navProfile'
 import { useSelector } from 'react-redux'
 import { getIsLoggedIn } from 'store/user'
 import Button from '../button/button'
@@ -42,7 +42,7 @@ const NavBar: React.FC = () => {
           } justify-content-between`}
           id="btn"
         >
-          <NavLinkCustom className="">
+          <NavLinkCustom>
             <li className="nav-item">
               <Link className="nav-link" to="/">
                 Главная

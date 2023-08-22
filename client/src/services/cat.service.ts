@@ -1,6 +1,6 @@
 import httpService from './http.servise'
 
-const catEndPoint = 'cat/'
+const catEndPoint = 'cats/'
 
 const catService = {
   get: async () => {
@@ -8,7 +8,7 @@ const catService = {
     return data
   },
   createCat: async (payload: any) => {
-    const { data } = await httpService.put(catEndPoint + payload._id, payload)
+    const { data } = await httpService.post(catEndPoint, payload)
     return data
   },
 }

@@ -43,7 +43,7 @@ const UserDetalPage = () => {
                       <CardCat
                         name={cat.name}
                         history={cat.history}
-                        periodInShelter={displayDate(cat.create_at)}
+                        periodInShelter={displayDate(cat.created_at)}
                         sex={cat.sex}
                         key={cat._id}
                         id={cat._id}
