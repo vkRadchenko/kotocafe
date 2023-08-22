@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { CardImage, CardWrapper, TextWrap } from './styled'
 interface CardCat {
@@ -18,13 +17,7 @@ const CardCat: React.FC<CardCat> = ({
   id,
   image,
 }) => {
-  const [favorits, setFavorits] = useState(false)
-
   const navigate = useNavigate()
-
-  const handleHeartClick = () => {
-    setFavorits((prevState) => !prevState)
-  }
   const handleCardClick = () => {
     navigate(`/cats/${id}`)
   }
