@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import TextField from 'components/common/form/textField'
 import TextAreaField from 'components/common/form/textAreaField'
 import RadioField from 'components/common/form/radioField'
@@ -6,7 +6,7 @@ import RangeField from 'components/common/form/rangeField'
 import MultiSelectField from 'components/common/form/multiSelectField'
 import { getQualities } from 'store/qualities'
 import { useSelector, useDispatch } from 'react-redux'
-import { getCatImage, removeCatImage, signUpCat } from 'store/cats'
+import { catImageService, getCatImage, signUpCat } from 'store/cats'
 import { getCurrentUserId } from 'store/user'
 import { getBreeds } from 'store/breed'
 import Button from './button/button'
@@ -29,6 +29,10 @@ const AddCatForm: React.FC = () => {
   const breed = useSelector(getBreeds())
   const currentUser = useSelector(getCurrentUserId())
   const catImg = useSelector(getCatImage())
+
+  useEffect(() => {
+    dispatch(catImageService())
+  }, [])
 
   const [data, setData] = useState<Data>({
     name: '',
@@ -71,9 +75,7 @@ const AddCatForm: React.FC = () => {
       breed: data.breed?.label,
       image: catImg,
     }
-
     dispatch(signUpCat(newData))
-    dispatch(removeCatImage())
   }
 
   return (

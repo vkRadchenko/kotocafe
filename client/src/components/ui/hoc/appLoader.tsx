@@ -18,9 +18,9 @@ const AppLoader: FC<AppLoaderProps> = ({ children }) => {
     dispatch(loadQualitiesList())
     dispatch(loadCatsList())
     dispatch(loadBreeds())
+    dispatch(catImageService())
     if (isLoggedIn) {
       dispatch(getUserData())
-      dispatch(catImageService())
     }
   }, [dispatch, isLoggedIn])
 
