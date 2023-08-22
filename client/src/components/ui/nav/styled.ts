@@ -18,6 +18,7 @@ export const NavLinkCustom = styled.ul`
   display: flex;
   flex: wrap;
   justify-content: space-evenly;
+  align-items: center;
   flex-grow: 1;
   .nav-item {
     text-align: center;
