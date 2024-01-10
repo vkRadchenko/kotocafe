@@ -1,4 +1,5 @@
-Реализовал **Fullstack SPA** приложение. 
+Реализовал **Fullstack SPA** приложение.
+
 ***Используя стек:*** TypeScript, React, Redux Toolkit, Axios, Express, Docker, MongoDB.
 
 Сайт объявлений бездомных кошек **Котокафе ([Deploy](http://80.249.144.170/))**
