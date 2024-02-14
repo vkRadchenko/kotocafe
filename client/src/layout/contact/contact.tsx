@@ -1,12 +1,12 @@
-import { YMaps, Map } from '@pbe/react-yandex-maps'
+import { YMaps, Map } from '@pbe/react-yandex-maps';
 
 const Contact: React.FC = () => {
   return (
     <YMaps>
       <div className="container flex-grow-1">
         <h2 className="mt-5"> Наши Контакты</h2>
-        <div className="row mt-4">
-          <div className="col-4">
+        <div className="d-flex flex-column-reverse flex-md-row mt-4">
+          <div className=" col-12 mt-5 mt-md-0 col-md-4">
             <div>
               <h4 className="mb-2">Адрес</h4>
               <p>344004 Россия, Ростов-на-Дону</p>
@@ -23,11 +23,11 @@ const Contact: React.FC = () => {
             </div>
           </div>
 
-          <div className="col-8">
-            <div className="w-auto">
+          <div className="mt-2 col-12 col-md-8">
+            <div className="">
               <Map
-                width={850}
-                height={500}
+                width={'100%'}
+                height={300}
                 defaultState={{ center: [47.22, 39.72], zoom: 12 }}
               />
             </div>
@@ -35,7 +35,7 @@ const Contact: React.FC = () => {
         </div>
       </div>
     </YMaps>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;
