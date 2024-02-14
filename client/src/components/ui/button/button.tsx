@@ -1,12 +1,13 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 interface I_ButtonProps {
-  children?: React.ReactNode
-  disabled?: boolean
-  size?: string
-  block?: boolean
-  onClick?: (e: React.MouseEvent<HTMLElement>) => void
-  type: 'button' | 'submit' | 'reset' | undefined
+  children?: React.ReactNode;
+  disabled?: boolean;
+  size?: string;
+  block?: boolean;
+  onClick?: (e: React.MouseEvent<HTMLElement>) => void;
+  type: 'button' | 'submit' | 'reset' | undefined;
+  className?: string;
 }
 
 const Button = styled(
@@ -60,6 +61,6 @@ const Button = styled(
     background-color: ${(p) => (p.disabled ? '#c2c2c2' : '#619595')};
     transition: 0.6s;
   }
-`
+`;
 
-export default Button
+export default Button;
