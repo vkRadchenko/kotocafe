@@ -1,5 +1,5 @@
-import styled, { createGlobalStyle } from 'styled-components'
-import { projectColors } from 'consts/projectColors'
+import styled, { createGlobalStyle } from 'styled-components';
+import { projectColors } from 'consts/projectColors';
 export const AppStyles = createGlobalStyle`
 
 
@@ -45,21 +45,7 @@ body{
     margin: 0;
     padding: 0;
   }
-  h1, .h1 {
-    font-size: 26px;
-  }
-  h2, .h2 {
-    font-size: 22px;
-  }
-  h3, .h3 {
-    font-size: 18px;
-  }
-  h4, .h4 {
-    font-size: 16px;
-  }
-  h5, .h5{
-    font-size: 14px;
-  }
+  
   p, li {
     line-height: 21px;
     color: inherit;  
@@ -73,13 +59,23 @@ body{
   .dropdown-item:hover{
     color: ${`${projectColors.hoverBaseColor}`};
   }
-`
+h5{
+  font-size: 16px;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  h5{
+  font-size: 14px;
+  font-weight: 600;}
+  }
+`;
 
 export const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-`
+`;
 
 export const InputCustom = styled.input`
   :checked {
@@ -88,4 +84,4 @@ export const InputCustom = styled.input`
     color: #436e6f;
     box-shadow: 0px 0px 5px 2px #436e6f;
   }
-`
+`;
