@@ -1,15 +1,15 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import { getUser } from 'store/user'
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getUser } from 'store/user';
 
 const NavProfile = () => {
-  const currentUser = useSelector(getUser())
-  const [isOpen, setIsOpen] = useState<boolean>(false)
+  const currentUser = useSelector(getUser());
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const hundleToggleMenu = () => {
-    setIsOpen((prevState) => !prevState)
-  }
-  if (!currentUser) return <>Loading...</>
+    setIsOpen((prevState) => !prevState);
+  };
+  if (!currentUser) return <>Loading...</>;
   return (
     <div className="dropdown" onClick={hundleToggleMenu}>
       <div className="dropdown btn dropdown-toggle d-flex align-items-center">
@@ -33,7 +33,7 @@ const NavProfile = () => {
         </Link>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default NavProfile
+export default NavProfile;

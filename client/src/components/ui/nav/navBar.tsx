@@ -10,9 +10,13 @@ import { useState } from 'react';
 const NavBar: React.FC = () => {
   const [burgerClick, setBurgerClick] = useState(false);
   const isLoggedIn = useSelector(getIsLoggedIn());
+  const screenWidth = window.screen.width;
+  console.log(screenWidth);
 
   const handleBurgerAction = () => {
-    setBurgerClick((prevstate) => !prevstate);
+    if (screenWidth <= 768) {
+      setBurgerClick((prevstate) => !prevstate);
+    }
   };
 
   return (
@@ -45,7 +49,7 @@ const NavBar: React.FC = () => {
           <div className="offcanvas-header">
             <Link className="navbar-brand" to="/">
               <div className="d-flex align-items-center">
-                <Logo src={logoImg} alt="logo" />
+                <Logo src={logoImg} alt="logo" onClick={handleBurgerAction} />
               </div>
             </Link>
             <button
@@ -58,25 +62,33 @@ const NavBar: React.FC = () => {
           </div>
           <div className="offcanvas-body d-flex flex-column flex-md-row">
             <NavLinkCustom>
-              <li className="nav-item" onClick={handleBurgerAction}>
-                <Link className="nav-link" to="/">
+              <li className="nav-item">
+                <Link className="nav-link" to="/" onClick={handleBurgerAction}>
                   Главная
                 </Link>
               </li>
-              <li className="nav-item" onClick={handleBurgerAction}>
-                <Link className="nav-link" to="/cats">
+              <li className="nav-item">
+                <Link
+                  className="nav-link"
+                  to="/cats"
+                  onClick={handleBurgerAction}
+                >
                   Наши животные
                 </Link>
               </li>
-              <li className="nav-item" onClick={handleBurgerAction}>
-                <Link className="nav-link" to="/contact">
+              <li className="nav-item">
+                <Link
+                  className="nav-link"
+                  to="/contact"
+                  onClick={handleBurgerAction}
+                >
                   Контакты
                 </Link>
               </li>
             </NavLinkCustom>
 
             <div
-              className={`d-flex align-items-center ${
+              className={`d-flex align-items-center flex-column flex-md-row ${
                 burgerClick
                   ? 'justify-content-center'
                   : 'justify-content-between'
@@ -85,7 +97,11 @@ const NavBar: React.FC = () => {
               {isLoggedIn ? (
                 <>
                   <Link to={'/additem'}>
-                    <Button type="button" size="sm">
+                    <Button
+                      type="button"
+                      size="sm"
+                      onClick={handleBurgerAction}
+                    >
                       Добавить животное
                     </Button>
                   </Link>
